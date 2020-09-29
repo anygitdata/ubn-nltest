@@ -1,0 +1,72 @@
+18.06.2020 17:40:12 keyLevel:UnboundLocalError  numLevel:100: UnboundLocalError ERROR:local variable 'pswcl' referenced before assignment
+18.06.2020 17:42:27 keyLevel:NameError  numLevel:100: NameError ERROR:name 'parentuser' is not defined
+23.06.2020 11:37:51 keyLevel:high  numLevel:100: high ERROR:get_profil_user нет данных для аргумента user
+23.06.2020 12:01:30 keyLevel:AttributeError  numLevel:100: AttributeError ERROR:'User' object has no attribute 'is_acitve'
+23.06.2020 13:56:32 keyLevel:NameError  numLevel:100: NameError ERROR:name 'dc' is not defined
+23.06.2020 17:13:46 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Unknown column '_status_base_id' in 'field list'
+24.06.2020 11:08:23 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil {'limitcon': 'not_exists in js_data'}
+24.06.2020 11:27:45 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil {'limitcon': 'not_exists in js_data'}
+24.06.2020 12:13:48 keyLevel:TypeError  numLevel:30: TypeError ERROR:Object of type SprStatus is not JSON serializable
+24.06.2020 12:52:07 keyLevel:AttributeError  numLevel:100: AttributeError ERROR:'dict' object has no attribute 'status'
+24.06.2020 12:56:33 keyLevel:high  numLevel:100: high ERROR:встраиваемый шаблон form.AddProf_memberForm: Нет данных limitcon
+24.06.2020 13:00:29 keyLevel:NameError  numLevel:100: NameError ERROR:name 'statusId' is not defined
+28.06.2020 21:26:14 keyLevel:TypeError  numLevel:30: TypeError ERROR:'SprStatus' object is not subscriptable
+28.06.2020 21:27:09 keyLevel:TypeError  numLevel:30: TypeError ERROR:'SprStatus' object is not subscriptable
+18.07.2020 21:44:54 keyLevel:JSONDecodeError  numLevel:100: JSONDecodeError ERROR:Expecting property name enclosed in double quotes: line 1 column 181 (char 180)
+18.07.2020 21:47:07 keyLevel:JSONDecodeError  numLevel:100: JSONDecodeError ERROR:Expecting property name enclosed in double quotes: line 1 column 181 (char 180)
+18.07.2020 21:47:25 keyLevel:JSONDecodeError  numLevel:100: JSONDecodeError ERROR:Expecting property name enclosed in double quotes: line 1 column 181 (char 180)
+18.07.2020 21:52:12 keyLevel:JSONDecodeError  numLevel:100: JSONDecodeError ERROR:Expecting property name enclosed in double quotes: line 1 column 181 (char 180)
+18.07.2020 21:55:07 keyLevel:JSONDecodeError  numLevel:100: JSONDecodeError ERROR:Expecting property name enclosed in double quotes: line 1 column 181 (char 180)
+18.07.2020 21:55:37 keyLevel:JSONDecodeError  numLevel:100: JSONDecodeError ERROR:Expecting property name enclosed in double quotes: line 1 column 181 (char 180)
+18.07.2020 22:16:52 keyLevel:DataError  numLevel:100: DataError ERROR:(1406, "Data too long for column 'arg_data' at row 1")
+18.07.2020 22:16:58 keyLevel:high  numLevel:100: high ERROR:Закрыт доступ к базе данных
+18.07.2020 22:17:36 keyLevel:InternalError  numLevel:100: InternalError ERROR:(1054, "Unknown column 's_mes_err' in 'field list'")
+18.07.2020 22:17:47 keyLevel:high  numLevel:100: high ERROR:Закрыт доступ к базе данных
+20.07.2020 15:11:02 keyLevel:OperationalError  numLevel:100: OperationalError ERROR:(2013, 'Lost connection to MySQL server during query')
+20.07.2020 15:11:02 keyLevel:high  numLevel:100: high ERROR:Закрыт доступ к базе данных
+20.07.2020 15:32:46 keyLevel:TypeError  numLevel:30: TypeError ERROR:'dict' object is not callable
+20.07.2020 16:04:22 keyLevel:SyntaxError  numLevel:30: SyntaxError ERROR:advuser.serv_advuser.Com_proc_advuser verify_yourHead: arg_user or arg_head не определен
+20.07.2020 16:04:22 keyLevel:SyntaxError  numLevel:30: SyntaxError ERROR:advuser.serv_advuser.Com_proc_advuser verify_yourHead: arg_user or arg_head не определен
+20.07.2020 16:05:30 keyLevel:SyntaxError  numLevel:30: SyntaxError ERROR:advuser.serv_advuser.Com_proc_advuser verify_yourHead: arg_user or arg_head не определен
+20.07.2020 16:05:30 keyLevel:SyntaxError  numLevel:30: SyntaxError ERROR:advuser.serv_advuser.Com_proc_advuser verify_yourHead: arg_user or arg_head не определен
+20.07.2020 16:54:41 keyLevel:SyntaxError  numLevel:30: SyntaxError ERROR:advuser.serv_advuser.Com_proc_advuser get_dataCons parentuser не определен
+20.07.2020 16:54:46 keyLevel:SyntaxError  numLevel:30: SyntaxError ERROR:advuser.serv_advuser.Com_proc_advuser get_dataCons parentuser не определен
+20.07.2020 16:55:41 keyLevel:SyntaxError  numLevel:30: SyntaxError ERROR:advuser.serv_advuser.Com_proc_advuser get_dataCons parentuser не определен
+20.07.2020 17:43:44 keyLevel:AttributeError  numLevel:100: AttributeError ERROR:'NoneType' object has no attribute 'items'
+20.07.2020 17:47:08 keyLevel:AttributeError  numLevel:100: AttributeError ERROR:'NoneType' object has no attribute 'items'
+20.07.2020 17:51:51 keyLevel:AttributeError  numLevel:100: AttributeError ERROR:'NoneType' object has no attribute 'items'
+20.07.2020 17:53:36 keyLevel:AttributeError  numLevel:100: AttributeError ERROR:'NoneType' object has no attribute 'items'
+20.07.2020 17:57:45 keyLevel:AttributeError  numLevel:100: AttributeError ERROR:'NoneType' object has no attribute 'items'
+21.07.2020 12:33:54 keyLevel:OperationalError  numLevel:100: OperationalError ERROR:(2013, 'Lost connection to MySQL server during query')
+22.07.2020 18:21:46 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil FUNCTION u0895627_nlintern.JSONT_EXTRACT does not exist
+22.07.2020 18:39:08 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil FUNCTION u0895627_nlintern.JSONT_EXTRACT does not exist
+22.07.2020 18:43:31 keyLevel:TypeError  numLevel:30: TypeError ERROR:can only concatenate str (not "NoneType") to str
+23.07.2020 10:47:02 keyLevel:NameError  numLevel:100: NameError ERROR:name 'user' is not defined
+23.07.2020 14:30:54 keyLevel:FieldError  numLevel:100: FieldError ERROR:Cannot resolve keyword 'levelperm' into field. Choices are: id, id_field, id_key, js_data
+23.07.2020 14:36:56 keyLevel:NameError  numLevel:100: NameError ERROR:name 'status' is not defined
+23.07.2020 14:37:11 keyLevel:NameError  numLevel:100: NameError ERROR:name 'status' is not defined
+23.07.2020 15:30:53 keyLevel:TypeError  numLevel:30: TypeError ERROR:can only concatenate str (not "NoneType") to str
+23.07.2020 15:43:12 keyLevel:TypeError  numLevel:30: TypeError ERROR:can only concatenate str (not "NoneType") to str
+23.07.2020 15:49:56 keyLevel:TypeError  numLevel:30: TypeError ERROR:can only concatenate str (not "NoneType") to str
+24.07.2020 12:16:56 keyLevel:OperationalError  numLevel:100: OperationalError ERROR:(2013, 'Lost connection to MySQL server during query')
+24.07.2020 12:36:23 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Column count doesn't match value count at row 1
+24.07.2020 12:39:35 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Column count doesn't match value count at row 1
+24.07.2020 12:48:08 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Data too long for column '_advdata' at row 1
+24.07.2020 18:10:09 keyLevel:OperationalError  numLevel:100: OperationalError ERROR:(2006, "MySQL server has gone away (ConnectionAbortedError(10053, 'Программа на вашем хост-компьютере разорвала установленное подключение', None, 10053, None))")
+24.07.2020 18:10:09 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+25.07.2020 19:03:45 keyLevel:NameError  numLevel:100: NameError ERROR:name 'levelperm' is not defined
+25.07.2020 19:04:33 keyLevel:NameError  numLevel:100: NameError ERROR:name 'levelperm' is not defined
+27.07.2020 14:40:06 keyLevel:InternalError  numLevel:100: InternalError ERROR:(1366, "Incorrect integer value: '' for column 'levelperm' at row 1")
+27.07.2020 14:40:06 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+27.07.2020 14:40:26 keyLevel:InternalError  numLevel:100: InternalError ERROR:(1366, "Incorrect integer value: '' for column 'levelperm' at row 1")
+27.07.2020 14:40:26 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+27.07.2020 15:24:32 keyLevel:DataError  numLevel:100: DataError ERROR:(1265, "Data truncated for column 'levelperm' at row 1")
+27.07.2020 15:24:32 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+27.07.2020 16:40:19 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Повторный ввод данных профиля
+27.07.2020 16:43:56 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Повторный ввод данных профиля
+27.07.2020 17:16:15 keyLevel:TypeError  numLevel:30: TypeError ERROR:Object of type function is not JSON serializable
+27.07.2020 17:17:27 keyLevel:TypeError  numLevel:30: TypeError ERROR:Object of type function is not JSON serializable
+27.07.2020 17:25:53 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Data too long for column '_advdata' at row 1
+28.07.2020 10:57:06 keyLevel:high  numLevel:100: high ERROR:Не выполнена верификация рукГруппы
+28.07.2020 11:50:59 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Incorrect integer value: 'empty' for column 'post' at row 1
+30.07.2020 13:01:30 keyLevel:AttributeError  numLevel:100: AttributeError ERROR:'NoneType' object has no attribute 'username'

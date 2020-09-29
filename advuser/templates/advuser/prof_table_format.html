@@ -1,0 +1,164 @@
+{# Шаблон профиля #}
+
+
+{% extends 'layout/base_layout.html' %}
+{% load static %}
+
+
+{%block header%} <h3 class="text-center"> Список пользователей - участников проекта  </h3> {%endblock%}
+
+{# Заполнение основного контента #}
+{%block main %}
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+    {% for row in rows %}
+
+            <div class="col-md-6 col-lg-6 col-sm-12 mb-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0"> {{row.full_name}} </h5>
+                            <small> <strong>Логин  {{row.username}} </strong> </small>                        
+                    </div>
+                    
+                    <div class="card-body" style="font-size:0.7rem;" >
+                        <div>
+                            <h6 class="card-subtitle" >Статус: {{row.status}}</h6>
+                            <div>
+                                Лимит подкл.: {{row.status_perm}}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 mt-3">
+
+                            <div class="row w-100">
+                                <div class="col-4 text-right">ID комп.</div>
+                                <div class="col-8 text-left">{{row.idcomp}}</div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-4 text-right">email</div>
+                                <div class="col-8 text-left p-x-0">{{row.email}}</div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-4 text-right">Телефон</div>
+                                <div class="col-8 text-left">{{row.phone}}</div>
+                            </div>
+
+                            <div class="w-100 mt-1"></div>
+                            <div class="row w-100">
+                                <div class="col-4 text-right">Возр. гр.</div>
+                                <div class="col-8 text-left">{{row.ageGroup}}</div>
+                            </div>
+
+                            <div class="row w-100">
+                                <div class="col-4 text-right">Почт. индекс</div>
+                                <div class="col-8 text-left">{{row.post}}</div>
+                            </div>
+
+                            <div class="row w-100">
+                                <div class="col-4 text-right">Логин quest</div>
+                                <div class="col-8 text-left">{{row.logincl}}</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+                    <a href="{% url 'updmesdata' mes=row.username %}" class="card-link" >Изменить профиль</a>
+
+                    </div>
+
+                </div>
+            </div>            
+
+    {% endfor %}
+    </div>
+
+    <style>
+        .font_family { font-family:Courier New, Courier, monospace; }
+    </style>
+
+    <div id="btn_url" url="{% url 'listprofils' page='page' filter='filter' %}" class="mb-2 mt-2" style="display: Inline-block" >
+        <span class="mr-2" 
+              style="font-size:0.8rem;" >выбрано {{dc_page.sel_page}}(из {{dc_page.num_pages}})</span>
+        {% for page in num_pages %}
+            {% if dc_page.sel_page == page %}
+                <span id="span_sel" class="bg-info font_family" 
+                      style="padding:0.2em 0.5em;  color:#ffffff" >{{page}}</span>                 
+                
+            {%else%}                
+                    <button id="btnsel_{{page}}" class="btn_sel mx-1 font_family" 
+                            style="padding:0 0.4em; font-size:0.85rem;" >{{page}}</button>
+            {% endif %}
+        {% endfor %}
+        
+    </div>
+
+    <div class="ml-2" style="font-size:0.7rem; display: Inline-block">
+        Фильтр: 
+        <select filter="{{filter}}">
+            <option value="70-40-30">Список рукГрупп, менеджеры</option>
+            <option value="30">Список менеджеров</option>
+            <option value="70">Только рукГрупп максУровень</option>
+            <option value="10-20">Список клиенты, гостВход</option>
+        </select>
+    </div>
+
+    <div class="mt-2">
+        <a class="text-info" href="{% url 'addprof_member' %}" >Создать профиль менеджера</a>
+    </div>
+
+</div>
+
+{%endblock main%}
+
+
+{% block scripts %}
+
+{# Загрузка js  #}
+<script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+
+                // Настройка списка фильтра 
+                select = $('select');
+                filter = select.attr('filter');
+                select.val(filter);
+
+                $('select').change(function (e) {                    
+                    var sel = $('select').val();
+
+                    url = $('#btn_url').attr('url');
+                    url = url.replace('page', '1');
+                    url = url.replace('filter', sel);
+
+                    window.location.href = url;
+                });
+
+
+                $('.btn_sel').click(function (e) {
+                    // номер страницы
+                    attr = $(this).attr('id');
+                    index = attr.indexOf('_');
+                    page = attr.substr(index+1);
+
+                    // идентификатор фильтра
+                    var sel = $('select').val();
+                    url = $('#btn_url').attr('url');
+
+                    // обновление url
+                    url = url.replace('page', page);
+                    url = url.replace('filter', sel);
+
+                    window.location.href = url;
+                });
+
+            });
+        })(jQuery);
+</script>
+    
+{% endblock %}

@@ -1,0 +1,35 @@
+30.07.2020 13:01:50 keyLevel:AttributeError  numLevel:100: AttributeError ERROR:'NoneType' object has no attribute 'username'
+30.07.2020 13:17:00 keyLevel:high  numLevel:100: high ERROR:modify_models.get_dictData_init_Form user_head or user_modf is None
+30.07.2020 15:37:35 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Incorrect integer value: 'empty' for column 'post' at row 1
+30.07.2020 15:48:30 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Incorrect integer value: 'empty' for column 'post' at row 1
+30.07.2020 15:48:55 keyLevel:high  numLevel:100: high ERROR:verify#app.com_serv_dbase.serv_modf_profil.serv_add_profil Incorrect integer value: 'empty' for column 'post' at row 1
+28.09.2020 14:26:48 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 14:26:48 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 14:27:06 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 14:27:06 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 14:29:52 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 14:29:52 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 14:30:53 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 14:30:53 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 14:31:29 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 14:31:29 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 15:02:53 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 15:02:53 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 15:04:30 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 15:04:30 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 15:05:40 keyLevel:ModuleNotFoundError  numLevel:100: ModuleNotFoundError ERROR:No module named 'pymysql'
+28.09.2020 15:05:40 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 15:12:15 keyLevel:ModuleNotFoundError  numLevel:100: ModuleNotFoundError ERROR:No module named 'pymysql'
+28.09.2020 15:12:57 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 15:14:59 keyLevel:ModuleNotFoundError  numLevel:100: ModuleNotFoundError ERROR:No module named 'pymysql'
+28.09.2020 15:15:34 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 15:16:39 keyLevel:ModuleNotFoundError  numLevel:100: ModuleNotFoundError ERROR:No module named 'pymysql'
+28.09.2020 15:16:39 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 18:29:59 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 18:29:59 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 18:39:17 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 18:39:17 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 18:47:34 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 18:47:34 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+28.09.2020 18:52:19 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
+28.09.2020 18:52:30 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
