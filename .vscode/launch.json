@@ -13,13 +13,7 @@
             "args": [
                 "runserver"
             ],
-            "django": true
+            "django": true,
         }
     ],
-
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintArgs": [
-        "--disable=C0111",
-        "--load-plugins",
-        "pylint_django"],
 }

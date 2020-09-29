@@ -7,23 +7,23 @@ from app import TypeError_system, ErrorRun_impl
 Процедура для выборки и анализа значения из SprStatus
     arg_init используется для инициализации объекта SprStatus
 result  object Type_status_user
-"""  
+"""
 def type_status_user(arg_user):
-    """ Процедура для выборки и анализа значений из SprStatus 
+    """ Процедура для выборки и анализа значений из SprStatus
         arg_user -> User or username or иной объект, представлющий User
         return  object Type_status_user """
 
     def _run_raise(s_arg, showMes=None):
         s_err = 'advuser.serv_typestatus.type_status_user'
 
-        if showMes:            
+        if showMes:
             raise ErrorRun_impl('verify##{0}'.format(s_arg))
         else:
             raise ErrorRun_impl('{0} {1}'.format(s_err, s_arg))
 
     #-------------------------------------------------------------
 
-    from .serv_sprstatus import Com_proc_sprstatus        
+    from .serv_sprstatus import Com_proc_sprstatus
     import json
 
     """
@@ -35,7 +35,7 @@ def type_status_user(arg_user):
 
     """
     class Type_status_user:
-        import json         
+        import json
 
 
         def __init__(self):
@@ -66,11 +66,11 @@ def type_status_user(arg_user):
 
 
         """
-        Создание структуры dict 
+        Создание структуры dict
             full_name, status.strIdent
         """
         @classmethod
-        def get_data_parentuser(cls, arg_user):                
+        def get_data_parentuser(cls, arg_user):
 
             res_dict = {}
             try:
@@ -85,7 +85,7 @@ def type_status_user(arg_user):
                 res_dict = dict(
                         full_name=user.get_full_name(),
                         strIdent = _status.strIdent
-                        )            
+                        )
 
             except Exception as ex:
                 TypeError_system(ex)
@@ -102,15 +102,15 @@ def type_status_user(arg_user):
 
         _user = getUser(arg_user)
         if _user is None:
-            _run_raise('Пользователь не определен') 
+            _run_raise('Пользователь не определен')
 
         _status = Com_proc_sprstatus.getStatus_or_None(_user)
         if not _status:
-            _run_raise('Статус не определен')                           
+            _run_raise('Статус не определен')
 
         exp_param = json.loads(_status.exp_param)
 
-        #  {"conv": {"headerexp": "is_headerexp"} 
+        #  {"conv": {"headerexp": "is_headerexp"}
         key =  list(exp_param['conv'].keys())[0]
         conv = exp_param['conv'][key]
         setattr(res, conv, True)
@@ -119,15 +119,12 @@ def type_status_user(arg_user):
         res.username = _user.username
         res.strIdent = _status.strIdent
 
-        res.str_info = 'status:{0} ({2} levelPerm:{3}) - {1}'.format(_status.pk, 
-                                                                     _status.strIdent, conv, 
+        res.str_info = 'status:{0} ({2} levelPerm:{3}) - {1}'.format(_status.pk,
+                                                                     _status.strIdent, conv,
                                                                      res.levelperm)
 
     except Exception as ex:
         res.is_notstatus = True
         res.error = str(ex)
-        
+
     return res
-
-
-        

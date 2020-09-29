@@ -277,7 +277,7 @@ def UpdPassword_user(request):
     else:   # Обработка GET
 
         if not cache.has_key('UpdPassword_user'):
-                return redirect_empty(arg_mes='Данные устарели')
+            return redirect_empty(arg_mes='Данные устарели')
 
         upd_username = cache.get('UpdPassword_user')
         cache.delete('UpdPassword_user')

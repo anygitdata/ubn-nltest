@@ -4,33 +4,34 @@ import json
 from app import getUser, Res_proc, ErrorRun_impl, TypeError_system
 from .serv_typestatus import type_status_user
 
+from .serv_sprstatus import Com_proc_sprstatus
 
 # Кортежи для classForm
 POL = (('М','Муж'),('Ж','Жен'))
 GET_MES = (('true','Да'),('false','Нет'))
 ID_COMMAND = ((1, 'Изменить профиль'), (2,'Изменить пароль'), (0, 'Изменить статус')  )
 
- 
+
 """
 return res_proc.res_model = AdvUser  or  res_proc.error = Строка сообщения
-    
+
     onError -> res_proc.error = Строка сообщения
     if res_proc   -> False
 
 """
 def servAdvUser_get_advUser(arg_user):
-    from .models import AdvUser    
+    from .models import AdvUser
 
-    def _run_raise(cls, s_arg, showMes=None):
-            _s_err = 'SyntaxError##advuser.serv_advuser.servAdvUser_get_advUser'
+    def _run_raise(s_arg, showMes=None):
+        _s_err = 'SyntaxError##advuser.serv_advuser.servAdvUser_get_advUser'
 
-            if showMes:            
-                raise ErrorRun_impl('verify##{0}'.format(s_arg))
-            else:
-                s_mes = '{0} {1}'.format(_s_err, s_arg)
-                TypeError_system(ErrorRun_impl(s_mes))  # запись в файл app/loggin/*.log
+        if showMes:
+            raise ErrorRun_impl('verify##{0}'.format(s_arg))
+        else:
+            s_mes = '{0} {1}'.format(_s_err, s_arg)
+            TypeError_system(ErrorRun_impl(s_mes))  # запись в файл app/loggin/*.log
 
-                raise ErrorRun_impl(s_mes)
+            raise ErrorRun_impl(s_mes)
     #-----------------------------------------------------------------
 
     res_proc = Res_proc()
@@ -38,7 +39,7 @@ def servAdvUser_get_advUser(arg_user):
     try:
         _user = getUser(arg_user)
         if _user is None:
-            _run_raise('Пользователь не определен User')
+            _run_raise(s_arg='Пользователь не определен User')
 
         row = AdvUser.objects.filter(user=_user)
         if row.exists():
@@ -46,7 +47,7 @@ def servAdvUser_get_advUser(arg_user):
             res_proc.res = True
 
         else:
-            _run_raise( 'Нет данных AdvUser')
+            _run_raise( s_arg='Нет данных AdvUser')
 
     except Exception as ex:
         res_proc.error = ex
@@ -73,7 +74,7 @@ def modf_dict_by_setting_def(arg_dict:dict):
 
         if val is None:
             if dc_attr.get(key):
-                arg_dict[key] = dc_attr[key]                
+                arg_dict[key] = dc_attr[key]
             else:
                 arg_dict[key] = dev_val
         else:
@@ -85,7 +86,7 @@ def modf_dict_by_setting_def(arg_dict:dict):
 
 
 # Нет ссылок на этом class modf_dict_by_setting_def
-class Struct_default_AdvUser:    
+class Struct_default_AdvUser:
 
     phone = 'Нет'
     email = 'Нет'
@@ -95,11 +96,12 @@ class Struct_default_AdvUser:
     status = '-'
     statusID = '-'
     limitcon = 'откл'
-    ageGroup = '-'        
+    ageGroup = '-'
     pswcl = 'Нет'
     logincl = 'Нет'
     idcomp = 'Нет'
-        
+    pol = '-'
+
 
     @classmethod
     def conv_pol(cls, arg_char:str):
@@ -127,8 +129,8 @@ class Struct_default_AdvUser:
         return res
 
     @classmethod
-    def conv_status_into_str(cls, statusID:str):        
-        from .serv_sprstatus import Com_proc_sprstatus 
+    def conv_status_into_str(cls, statusID:str):
+        # from .serv_sprstatus import Com_proc_sprstatus
 
         res = cls.statusID
 
@@ -165,24 +167,24 @@ class Struct_default_AdvUser:
 
 class Com_proc_advuser:
 #    from advuser.serv_sprstatus import Com_proc_sprstatus
-    from .models import AdvUser 
+    from .models import AdvUser
 
     _s_err = 'SyntaxError##advuser.serv_advuser.Com_proc_advuser'
     _s_err_user_notData = 'Пользователь User не определен'
 
 
     @classmethod
-    def _write_except_into_log(cls, arg_except):        
+    def _write_except_into_log(cls, arg_except):
         s_mes = '{0} {1}'.format(cls._s_err, arg_except)
         TypeError_system(ErrorRun_impl(s_mes))  # запись в файл app/loggin/*.log
 
 
     #процедура вызова ErrorRun_impl
     @classmethod
-    def _run_raise(cls, s_arg, showMes=None, s_err=None):       
+    def _run_raise(cls, s_arg, showMes=None, s_err=None):
         """s_arg строка сообщения исключения из кода
-           showMes=Falst/True идентификатор отображения в браузере 
-                если True остальные аргументы игнорируются 
+           showMes=Falst/True идентификатор отображения в браузере
+                если True остальные аргументы игнорируются
                 в браузере отображается информация s_arg
             ------------------------------------------------------------------
             s_err базовая строка к которой добавляется дополнительные данные
@@ -191,7 +193,7 @@ class Com_proc_advuser:
 
         s_err = s_err or cls._s_err
 
-        if showMes:            
+        if showMes:
             raise ErrorRun_impl(f'verify##{s_arg}')
         else:
             s_mes = '{0} {1}'.format(s_err, s_arg)
@@ -200,52 +202,52 @@ class Com_proc_advuser:
 
     #**************** сервис обработки данных ***********************
     # testing 20.05.2020 in consol django
-    # Получение path для фотографий пользователей 
+    # Получение path для фотографий пользователей
     @classmethod
     def get_path_photo(cls, user):
         from app import verify_exists_file_photo
-    
+
         user = getUser(user)
         if not user:
-            return None        
-       
+            return None
+
         s_photo = user.username + '.png'
         s_path = verify_exists_file_photo(s_photo)
-    
+
         return s_path
 
 
     # Консультант пользователя
     # return parentuser or None
     """
-    testing 20.05.2020 
+    testing 20.05.2020
     modul: tests.advuser.test_servadvuser
     procedure: test_get_user_cons
     file: tests/advuser/serv_advuser/test_serv_advuser.json
     """
     @classmethod
-    def get_user_cons(cls, user):        
+    def get_user_cons(cls, user):
         """ Получить User as Consultant  or None """
-        try:            
+        try:
 
             user = getUser(user)
             if user is None:
                 cls._run_raise('get_user_cons: пользователь не определен')
-        
+
             if user.is_superuser:
-                return cls.get_user_head()            
+                return cls.get_user_head()
 
 
             res_advUser = servAdvUser_get_advUser(user)
             if not res_advUser:
                 cls._run_raise('get_user_cons: нет данных по модели AdvUser user:'+ str(user))
-                
+
             advuser = res_advUser.res_model
             parentuser = getUser(advuser.parentuser)
-                
-            if parentuser is None: 
+
+            if parentuser is None:
                 cls._run_raise('get_user_cons: parentuser:{0} не найден как User'.format(advuser.parentuser))
-            
+
             return parentuser
 
         except Exception as ex:
@@ -271,17 +273,17 @@ class Com_proc_advuser:
 
     @classmethod
     def get_head70_user(cls, arg_user)->User:
-        """ Получить пользователя на уровне руководителя группы 
+        """ Получить пользователя на уровне руководителя группы
         with levelperm=70
         return User or None
         """
 
-        from .serv_typestatus import type_status_user
+        # from .serv_typestatus import type_status_user
         from .models import AdvUser
 
         try:
 
-            user = getUser(arg_user);
+            user = getUser(arg_user)
 
             row = AdvUser.objects.get(pk=user)
             parentuser = row.parentuser
@@ -295,7 +297,7 @@ class Com_proc_advuser:
                 row_master = AdvUser.objects.get(pk=parentuser)
 
                 levelperm = row_master.status.levelperm
-                        
+
 
             return parentuser
 
@@ -304,8 +306,8 @@ class Com_proc_advuser:
 
 
     # Руководитель группы гостВхода, клиента, менеджера
-    # Используется для пользователй с уровнемДоступа менее 40 
-    # return res_proc.res_model руководитель группы 
+    # Используется для пользователй с уровнемДоступа менее 40
+    # return res_proc.res_model руководитель группы
     """
     testing 20.05.2020
     modul prtests.tests.advuser.test_serv_advuser
@@ -313,7 +315,7 @@ class Com_proc_advuser:
     file: tests/advuser/serv_advuser/test_serv_advuser.json
     """
     @classmethod
-    def get_head_user(cls, user)->Res_proc:  
+    def get_head_user(cls, user)->Res_proc:
         """ Get head user or None """
         from .serv_typestatus import type_status_user
 
@@ -323,7 +325,7 @@ class Com_proc_advuser:
         try:
             user = getUser(user)
             if user is None:
-                cls._run_raise('get_head_user: нет данных для арг. user')                
+                cls._run_raise('get_head_user: нет данных для арг. user')
 
             if user.is_superuser:
                 userHead = cls.get_user_head()
@@ -333,12 +335,12 @@ class Com_proc_advuser:
             obj_typeStatus = type_status_user(user)
             if not obj_typeStatus:
                 cls._run_raise('get_head_user: ошибка вызваемой процедуры type_status_user(user)')
-                
+
             levelperm = obj_typeStatus.levelperm
             if levelperm in (40, 70, 100):
                 userHead = user
 
-            else:                    
+            else:
 
                 level = levelperm
                 user_next = cls.get_user_cons(user)
@@ -348,18 +350,18 @@ class Com_proc_advuser:
                     obj_typeStatus = type_status_user(user_next)
                     if not obj_typeStatus:
                         cls._run_raise('get_head_user: ошибка вызваемой процедуры type_status_user(user)')
-                                              
+
                     level = obj_typeStatus.levelperm
-                    if level>39: 
+                    if level>39:
                         break
 
                     user_next = cls.get_user_cons(user_next)
-                    
+
                 userHead = user_next
 
             if userHead:
                 res_proc.res_model = userHead
-                res_proc.res = True                        
+                res_proc.res = True
 
         except Exception as  ex:
             res_proc.error = ex
@@ -368,7 +370,7 @@ class Com_proc_advuser:
 
 
     #  Пользователь как руководитель проекта
-    #  return User or raise 
+    #  return User or raise
     """
     testing 20.05.2020
     modul prtests.tests.advuser.test_serv_advuser
@@ -377,14 +379,14 @@ class Com_proc_advuser:
 
     """
     @classmethod
-    def get_user_head(cls)->User:        
+    def get_user_head(cls)->User:
         """ return User руководитель проекта """
         rowHead = cls.AdvUser.objects.filter(status__levelperm=100)
         if rowHead.exists():
             rowHead = rowHead.first()
 
         else:
-            cls._run_raise('get_user_head: нет данных для рукПроекта')            
+            cls._run_raise('get_user_head: нет данных для рукПроекта')
 
         user_head = rowHead.user
 
@@ -403,7 +405,7 @@ class Com_proc_advuser:
     def get_advUser_header(cls):
         res = None
 
-        try:            
+        try:
             user_head = cls.get_user_head()
             res_advuser = servAdvUser_get_advUser(user_head)
             if not res_advuser:
@@ -412,7 +414,7 @@ class Com_proc_advuser:
             res = res_advuser.res_model
 
         except :
-            return None        
+            return None
 
         return res
 
@@ -433,12 +435,12 @@ class Com_proc_advuser:
         out_dict = dict()
         if cls.get_advData_user(user_header, out_dict, modf_form):
             return out_dict
-        
+
         return {}
 
 
     # return dict or None
-    # возвращает объект dict AdvUser.advData   
+    # возвращает объект dict AdvUser.advData
     """
         testing 20.05.2020
         modul prtests.tests.advuser.test_serv_advuser
@@ -448,14 +450,14 @@ class Com_proc_advuser:
     """
     @classmethod
     def get_advData(cls, user, modf_form=False):
-        """ return dict_advdata_or_None 
+        """ return dict_advdata_or_None
         modf_form=True -> модифицирует данные для отображения в браузере
         """
 
         user = getUser(user)
         if user is None:
             cls._run_raise('get_advData: user не определен')
-            
+
         if user.is_superuser:
             return dict(username=user.username, full_name='СуперПользователь')
 
@@ -485,7 +487,7 @@ class Com_proc_advuser:
 
     """
     @classmethod
-    def get_dataUser(cls, user)->dict: 
+    def get_dataUser(cls, user)->dict:
 
         user = getUser(user)
         if user is None:
@@ -504,7 +506,7 @@ class Com_proc_advuser:
     file: tests/advuser/serv_advuser/test_serv_advuser.json
     """
     @classmethod
-    def get_advData_user(cls, user, out_dict:dict, modf_form=False)->bool: 
+    def get_advData_user(cls, user, out_dict:dict, modf_form=False)->bool:
         """ return True|False dict->out_dict """
 
         if isinstance(out_dict, dict): out_dict.clear()
@@ -519,11 +521,11 @@ class Com_proc_advuser:
             else:
                 cls._write_except_into_log('get_advData_user: нет данных advData')
 
-        except Exception as ex: 
+        except Exception as ex:
             cls._write_except_into_log(str(ex))
             return False
 
-        return res 
+        return res
 
 
     # return res_proc.res = True если arg_head является рукГруппы arg_user
@@ -538,7 +540,7 @@ class Com_proc_advuser:
     @classmethod
     def verify_yourHead(cls, arg_user, arg_head)->Res_proc:
         """ Анализ, что arg_head является рукГруппы или рукПроекта """
-        
+
         res_proc = Res_proc()
 
         try:
@@ -576,12 +578,12 @@ class Com_proc_advuser:
             else:
                 res_proc.mes = f'{user_head.get_full_name()} не является рукГруппы для {user.username}'
                 cls._run_raise(res_proc.mes, True)
-                
+
 
         except Exception  as ex:
             res_proc.error = ex
 
-        return res_proc 
+        return res_proc
 
 
     # выборка данных для личного консультанта
@@ -603,11 +605,11 @@ class Com_proc_advuser:
         if user is None:
             cls._write_except_into_log(f'{s_err} arg user не определен')
             return None
-        
+
         try:
 
             if user.is_superuser:
-                parentuser = cls.get_user_head()                
+                parentuser = cls.get_user_head()
                 parent_user_login = parentuser.username
 
             else:
@@ -626,7 +628,7 @@ class Com_proc_advuser:
 
         return res
 
-    
+
     """
     Тестирование 1.06.2020
     modul: tests.advuser.test_serv_advuser
@@ -637,9 +639,9 @@ class Com_proc_advuser:
     def get_profil_user_for_teg(cls, user):
         from app.com_data.any_mixin import get_valFromDict
 
-        
+
         user = getUser(user)
-        if user is None: 
+        if user is None:
             raise ValueError('get_profil_user_for_teg нет данных для user')
 
         prof_proc = cls.get_profil_user(user)
@@ -649,7 +651,7 @@ class Com_proc_advuser:
         except:
             advuser = None
 
-        if not prof_proc:  # если профиля нет по любой причине 
+        if not prof_proc:  # если профиля нет по любой причине
             res = dict(
                     full_name = user.get_full_name(),
                     email = user.email
@@ -670,13 +672,13 @@ class Com_proc_advuser:
             advData = None
 
         param =  get_valFromDict(prof_proc.res_dict,'param')
-        type_status = prof_proc.res_obj;
+        type_status = prof_proc.res_obj
 
-        if  not (param or statusID):
+        if  not param:
             raise ValueError('get_profil_user_for_teg: Нет профиля или statusID')
 
         param.update(dict(
-                status='{0} {1}'.format( type_status.statusID, type_status.strIdent), 
+                status='{0} {1}'.format( type_status.statusID, type_status.strIdent),
                 email = user.email
                 ))
         if not advData:
@@ -704,14 +706,14 @@ class Com_proc_advuser:
         structDef = Struct_default_AdvUser
 
         res_proc = Res_proc()
-        
+
         s_err = 'get_profil_user'
 
         try:
             user = getUser(user)
             if user is None:
                 raise ErrorRun_impl('{0} нет данных для аргумента user'.format(s_err))
-                        
+
             res_proc.any_str = user.username
             type_status = type_status_user(user)
             res_proc.res_obj = type_status
@@ -740,14 +742,14 @@ class Com_proc_advuser:
                 res_proc.res = True
 
                 return res_proc
-            
+
 
             # возврат нулевого статуса
             if not type_status:
                 param = dict(
-                    imgphoto  = servAdvUser_get_advUser.get_path_photo('suadm'),
+                    imgphoto  = cls.get_path_photo('suadm'),
                     full_name = 'Пользователь не определен',
-                    status = cls.Com_proc_sprstatus.get_status_notstatus().strIdent,
+                    status = Com_proc_sprstatus.get_status_notstatus().strIdent,
                     idcomp = structDef.idcomp
                     )
 
@@ -769,7 +771,7 @@ class Com_proc_advuser:
             dict_head = cls.get_dataHeader()
             dict_cons = cls.get_dataCons(user)
             dict_user = cls.get_advData(user)
-            dict_user['sendMes'] = structDef.conv_send_mes(dict_user.get('sendMes'))            
+            dict_user['sendMes'] = structDef.conv_send_mes(dict_user.get('sendMes'))
 
             if dict_cons is None:
                 dict_cont = dict_head
@@ -789,20 +791,20 @@ class Com_proc_advuser:
             if type_status.levelperm < 30:
                 arrayProf += [ dict(val=dict_user.get('pswcl'), str='Пароль:')]
 
-            # Обработка гостВхода 
+            # Обработка гостВхода
             if type_status.levelperm < 20:  # гостевой вход или клиент сайта
 
-                arrayProf +=  [ 
-                    dict(val=dict_cons.get('full_name') or structDef.full_name, str='Личн. консультант:', idrow='parentData'),                    
+                arrayProf +=  [
+                    dict(val=dict_cons.get('full_name') or structDef.full_name, str='Личн. консультант:', idrow='parentData'),
                     dict(val=dict_cons.get('phone')  or structDef.phone,     str='Тел. личн. консультанта:')]
 
-                arrayProf += [ 
+                arrayProf += [
                     dict(val=dict_head.get('full_name') or structDef.full_name ,  str='Админ. проекта:', idrow='parentData'),
                     dict(val=dict_head.get('phone')     or structDef.phone,       str='Телефон адмПроекта:')]
 
             else:  # структура профиля для менеджеров и рукГрупп
 
-                arrayProf +=[                    
+                arrayProf +=[
                     dict(val= dict_user.get('phone') or structDef.phone , str='Телефон:'),
                     dict(val= dict_user.get('email') or structDef.email,       str='email:'),
                     dict(val= dict_user.get('sendMes'),   str='Получать сообщ.:'),
@@ -814,13 +816,13 @@ class Com_proc_advuser:
                     arrayProf += [
                         dict(val= dict_user.get('pswcl') or structDef.pswcl , str='Пароль клиента:', idrow='parentData'),
                         dict(val= dict_user.get('logincl') or structDef.logincl , str='Логин клиента:')
-                        ]                               
+                        ]
 
                 if type_status.levelperm < 100:
                     arrayProf += [
                         dict(val=dict_cons.get('full_name') or structDef.full_name, str='Консультант:', idrow='parentData'),
                         dict(val=dict_cons.get('phone')  or structDef.phone,     str='Тел. консультанта:'),
-                        dict(val=dict_cons.get('email')  or structDef.email,     str='email консультанта:')                        
+                        dict(val=dict_cons.get('email')  or structDef.email,     str='email консультанта:')
                         ]
 
                 if type_status.levelperm in (40, 70):
@@ -835,10 +837,10 @@ class Com_proc_advuser:
                             ]
 
 
-            res_proc.res_dict = dict(  
-                            btn_upd=True,                            
+            res_proc.res_dict = dict(
+                            btn_upd=True,
                             param    = param,
-                            prof     = arrayProf 
+                            prof     = arrayProf
                             )
 
             res_proc.res = True
@@ -848,7 +850,7 @@ class Com_proc_advuser:
             res_proc.error = ex
 
         return res_proc
-   
+
     # ************** конец процедуры get_profil_user ***********************
 
 
@@ -869,7 +871,7 @@ class Com_proc_advuser:
         try:
             advData = cls.get_advData(arg_user)  # dict or None
             if advData is None: return None
-                        
+
             val = advData.get(arg_par)
 
             return val
@@ -888,7 +890,7 @@ class Com_proc_advuser:
     """
     @classmethod
     def get_subRows_head(cls, arg_head):
-        
+
         res_proc = Res_proc()
 
         try:
@@ -906,8 +908,8 @@ class Com_proc_advuser:
             else:
                 cls._run_raise('Статус пользователя не определен')
 
-            res_lst = list( ( row.user.username 
-                for row in cls.AdvUser.objects.filter(parentuser=_username_head, 
+            res_lst = list( ( row.user.username
+                for row in cls.AdvUser.objects.filter(parentuser=_username_head,
                             status__levelperm__in=(30,40,70)) ))
             if res_lst:
                 res_lst.append(_username_head) # включить самого рукГруппы
@@ -924,7 +926,7 @@ class Com_proc_advuser:
 
 
     # возвращает строку res_proc.any_str=parentuser
-    # parentuser 
+    # parentuser
     """
         testing 21.05.2020
         modul prtests.tests.advuser.test_serv_advuser
@@ -951,10 +953,10 @@ class Com_proc_advuser:
                 res_proc.any_str = parentuser.username
                 return res_proc
 
-            row = AdvUser.objects.get(pk=user) 
+            row = AdvUser.objects.get(pk=user)
 
             parentuser = row.parentuser
-            parentuser = getUser(parentuser) 
+            parentuser = getUser(parentuser)
 
         except Exception as ex:
             return None
@@ -964,7 +966,7 @@ class Com_proc_advuser:
 
     @classmethod
     def get_parentuser(cls, arg_user)->str:
-        """ Извлекает строку User.username 
+        """ Извлекает строку User.username
         return Res_proc.any_str
         """
         s_err = 'get_parentuser'
@@ -987,7 +989,7 @@ class Com_proc_advuser:
             advuser = res_advUser.res_model
             parentuser = advuser.parentuser
 
-            # Проверка, что login существует 
+            # Проверка, что login существует
             user_parentuser = getUser(parentuser)
             if user_parentuser is None:
                 cls._run_raise(f'{s_err} parentuser не найден в справочнике auth_user')
@@ -1006,5 +1008,3 @@ class Com_proc_advuser:
             res_proc.error = ex
 
         return res_proc
-
-
