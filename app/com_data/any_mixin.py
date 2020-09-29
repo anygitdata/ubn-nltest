@@ -1,12 +1,12 @@
 
-from .type_error import TypeError_system 
+from .type_error import TypeError_system
 from .user_except import ErrorRun_impl
 
 from random import choice
 from string import ascii_lowercase, ascii_uppercase, digits
 
 
-# Поиск и создание объекта User 
+# Поиск и создание объекта User
 """
 Тестирование 17.05.2020
 modul: tests.com_data.test_com_data
@@ -26,10 +26,10 @@ def getUser(user):
         elif sType == 'str':
             if User.objects.filter(username=user).exists():
                 return User.objects.get(username=user)
-            else: return None        
+            else: return None
 
-        elif sType == 'User': 
-               return user
+        elif sType == 'User':
+            return user
 
         elif hasattr(user,'username'):
             _user = user.username
@@ -41,11 +41,11 @@ def getUser(user):
         return None
 
 
-# Генерирования logincl  and  pswcl 
+# Генерирования logincl  and  pswcl
 class Value_login_psw_cl:
 
     @classmethod
-    def _verifyExistsUser(cls, username): 
+    def _verifyExistsUser(cls, username):
         from django.contrib.auth.models import User
         if not isinstance(username, str):
             raise TypeError('_verifyExistsUser тип параметра д.быть строкой')
@@ -58,14 +58,14 @@ class Value_login_psw_cl:
         return ''.join(choice(ascii_uppercase) for i in range(4)) + '-'+ ''.join(choice(digits) for i in range(4))
 
     @classmethod
-    def getLogin_cl(cls):    
+    def getLogin_cl(cls):
         login = cls._getLogin_cl()
         while cls._verifyExistsUser(login):
             login = cls._getLogin_cl()
-        
+
         return login
 
-    def getPassword_cl():    
+    def getPassword_cl():
         from app.models import spr_pswcl
 
         try:
@@ -79,18 +79,18 @@ class Value_login_psw_cl:
 
         except:
             return None
-        
 
-def getPassword_cl():    
+
+def getPassword_cl():
     return Value_login_psw_cl.getPassword_cl()
 
 # формирует случайное структуру логина по формату SSS-NNNN
-def getLogin_cl():  
+def getLogin_cl():
     return Value_login_psw_cl.getLogin_cl()
 
 
 """
-Используется в качестве буфера, содеражащего данные из 
+Используется в качестве буфера, содеражащего данные из
 обрабатываемых процедур, методов класса
 -----------------------------------------------
 Тестирование 17.05.2020
@@ -99,9 +99,9 @@ file:  tests/app/com_data/test_com_data.json
 """
 class Res_proc:
 
-    def __init__(self, res=False, mes=None, title=None, 
-                 error=None, res_dict=None, 
-                 res_list=None, 
+    def __init__(self, res=False, mes=None, title=None,
+                 error=None, res_dict=None,
+                 res_list=None,
                  res_model=None, res_obj=None):
 
         self.res = res
@@ -111,8 +111,8 @@ class Res_proc:
         self.res_obj = None
 
         self._error     = None
-        self._res_dict  = None 
-        self._res_list  = None 
+        self._res_dict  = None
+        self._res_list  = None
         self.username   = None
         self.any_str    = None
 
@@ -136,9 +136,9 @@ class Res_proc:
 
         for k,v in dc.items():
             res += '{0}:{1}; '.format(k,v)
-        
+
         return res
-    
+
     _const_empty = 'empty'
     _const_exist = 'exist'
     _const_notRecord = 'notRecord'
@@ -146,22 +146,22 @@ class Res_proc:
 
 
     # чтобы меньше было ошибок при написании
-    # и чтобы везде было одинаково 
-    if 1<2:  # для удобства сопровождения 
+    # и чтобы везде было одинаково
+    if 1<2:  # для удобства сопровождения
         @classmethod
-        def FN_exist(cls):     
+        def FN_exist(cls):
             return cls._const_exist
 
         @classmethod
-        def FN_empty(cls):     
+        def FN_empty(cls):
             return cls._const_empty
 
         @property
-        def PR_exist(self): 
+        def PR_exist(self):
             return self.FN_exist()
 
         @property
-        def PR_empty(self): 
+        def PR_empty(self):
             return self.FN_empty()
 
         # Для общей идентификации результата поиска данных в БД
@@ -190,7 +190,7 @@ class Res_proc:
             val = arg_dict.get(arg_key)
             if val and val != _empty:
                 res = val
-            
+
             return res
 
     # ---------- конец блока полей удобства написания кода -------------
@@ -241,7 +241,7 @@ class Res_proc:
     def initStr_error(cls, arg_err:str):
         res = ''
 
-        if isinstance(arg_err, str):            
+        if isinstance(arg_err, str):
             res = arg_err
         else:
             _class = arg_err.__class__.__name__
@@ -262,7 +262,7 @@ class Res_proc:
         procedure: test__class_Result_procedure_setter
     """
     @error.setter
-    def error(self, value):                    
+    def error(self, value):
 
         _err_system = TypeError_system(value)
         self._error = _err_system.PR_error
@@ -285,9 +285,9 @@ def verify_exists_email_ext(email, arg_user):
         if not arg_user: return None
 
     ar_user = User.objects.filter(email=email).exclude(pk=arg_user.pk)
-    if ar_user.exists():    
+    if ar_user.exists():
         return True
-    else: return False 
+    else: return False
 
 
 # Сквозная проверка уникальности элПочты
