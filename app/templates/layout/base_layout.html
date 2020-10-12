@@ -75,9 +75,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav text-uppercase">
-                        <a class="nav-item nav-link active" href="{% url 'mainapp' %}">Главная <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Контакты</a>
-                        <a class="nav-item nav-link" href="{% url 'profile'%}">Профиль</a>
+                        <a id='item-navbar-mainapp' class="nav-item nav-link active" href="{% url 'mainapp' %}">Главная <span class="sr-only">(current)</span></a>
+                        <a id='item-navbar-contact' class="nav-item nav-link" href="#">Контакты</a>
+                        <a id='item-navbar-profile' class="nav-item nav-link" href="{% url 'profile'%}">Профиль</a>
 
                         <a class="nav-item nav-link" href="#">О нас</a>
                         <a class="nav-item nav-link" href="#">Вопросы</a>
@@ -171,7 +171,9 @@
                     autoOpen: false
                 });
 
-                data = { type_mes: 'system_send_mes' }
+                let navItem; // Элемент навБар для активации
+
+                let data = { type_mes: 'system_send_mes' }
                 // Открыть модальное окно
                 $.ajax({
                     url: "{% url 'sendspecialmes' %}",
@@ -180,16 +182,24 @@
                     dataType: 'json',
                     success: function (data) {
 
+                        // Обработка выделения элемента меню
+                        if (data.navItem){
+                            $('.nav-item.active').removeClass('active');
+
+                            navItem = '#' + data.navItem;
+                            $(navItem).addClass('active');
+                            }
+
                         if (data.res == 'empty') return;
 
-
-                        val_dialog = $('#any_message_system')
+                        let val_dialog = $('#any_message_system')
                         val_dialog.dialog({ title: data.title })
                         val_dialog.html(data.mes)
                         val_dialog.dialog('open')
-
                     }
                 });
+
+
 
 
             });

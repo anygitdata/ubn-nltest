@@ -41,6 +41,7 @@ def redirect_empty(arg_title=None, arg_mes=None):
 def AdvPanel_prof(request):
     from .serv_typestatus import type_status_user
 
+    cache.set('item_navbar_active','item-navbar-admpanel')
 
     return redirect('listprof_lvl30', page=1)
 
@@ -881,12 +882,12 @@ def Table_profils_lev30(request, page):
 
 @login_required
 def List_profils(request, page, filter):
-    """
+    """List_profils.
+
     url:  listprofils
     name: listprofils
     ------------------------
-    Табличная форма показа менеджеров
-    """
+    Табличная форма показа менеджеров"""
 
     from .modify_models import get_list_prof_memb
     from advuser.serv_typestatus import type_status_user
@@ -932,7 +933,7 @@ def List_profils(request, page, filter):
 
 @login_required
 def Index(request):
-    from .serv_typestatus import type_status_user
+    # from .serv_typestatus import type_status_user
 
     return render(request, 'advuser/index.html')
 
@@ -945,6 +946,9 @@ def Profile(request):
 
     prof = Com_proc_advuser.get_profil_user(request.user)
     if prof:
+
+        cache.set('item_navbar_active','item-navbar-profile')
+
         if prof.res_obj.levelperm == 10:
             cont = dict(prof=prof.res_dict['prof'])
 

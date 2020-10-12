@@ -15,24 +15,31 @@ from django.contrib.auth.decorators import login_required
         title='Сессия' заголовок сообщения
         mes=s_mes      строка сообщения
  url:  sendspecialmes
- name: sendspecialmes 
+ name: sendspecialmes
 """
-def Send_special_message(request): 
+def Send_special_message(request):
 
     #type_requery = request.method
-    
+
     data = request.GET
     if data:
         # из Ajax параметр:  data = {type_mes:'system_send_mes'}
-        # через GET параметры type_mes 
+        # через GET параметры type_mes
         type_mes = data.get('type_mes')
     else:
         type_mes = None
-    
+
     dc = dict(res='empty')
+
+    # класс активации меню navbar-item
+    if cache.has_key('item_navbar_active'):
+        item_navbar_active = cache.get('item_navbar_active')
+        cache.delete('item_navbar_active')
+        dc.update(dict(navItem=item_navbar_active))
+
     if type_mes == 'system_send_mes': # запрос на системные сообщения для отображения в браузере
-        
-        # Обработка системых сообщений, если они были 
+
+        # Обработка системых сообщений, если они были
         if 'system_send_mes' in request.session:
             dict_session = request.session.get('system_send_mes')
 
@@ -41,8 +48,10 @@ def Send_special_message(request):
 
             dc = dict(res='exists', title=title, mes=mes )
 
-            # удаление данных по сообщению 
-            del request.session['system_send_mes'] 
+
+
+            # удаление данных по сообщению
+            del request.session['system_send_mes']
 
     return JsonResponse(dc, json_dumps_params=dict(ensure_ascii=False))
 
@@ -52,7 +61,7 @@ def Send_special_message(request):
 def index(request):
     from advuser.serv_typestatus import type_status_user
 
-    #request.session.clear_expired()  # обнуление буфера session 
+    #request.session.clear_expired()  # обнуление буфера session
     status = type_status_user(request.user)
     cont_dc = dict(levelperm=status.levelperm)
 
@@ -64,7 +73,7 @@ def logout(request):
 
 
 """
-url: name=emptyext   
+url: name=emptyext
 /emptyext/
 Контроллер empty с использованием cache
 """
