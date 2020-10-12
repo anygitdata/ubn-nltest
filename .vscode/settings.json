@@ -1,4 +1,5 @@
 {
+    "python.pythonPath": "env/bin/python",
     "python.envFile": "${workspaceFolder}/.env",
     "terminal.integrated.env.osx": {"PYTHONPATH": "${workspaceFolder}"},
     "python.linting.pylintEnabled": true,
