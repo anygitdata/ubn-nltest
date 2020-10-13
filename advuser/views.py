@@ -1,15 +1,17 @@
+
 from django.shortcuts import render, redirect
 from django.core.cache import cache
+from django.contrib.auth.decorators import login_required
+
+from app import getUser
 
 from .forms import (Base_profForm, AddProf_memberForm, AdvPanel_profForm,
                     Modf_prof_byHeaderForm, Modf_prof_byuserForm,
                     UpdPassword_byHeadForm, UpdPsw_byUserForm, UpdStatus_userForm )
 
-from django.contrib.auth.decorators import login_required
 from .serv_advuser import Com_proc_advuser
-from app import PM_run_raise as run_raise, getUser
 from .serv_typestatus import type_status_user
-import json
+# import json
 
 
 def modf_data_dict(arg_dc:dict)->dict:
@@ -31,6 +33,9 @@ def redirect_empty(arg_title=None, arg_mes=None):
     arg_title  заголовок на странице default None -> Сообщение сервера
     arg_mes    текстовое сообщение   default None -> Сервер отклонил обработку
     """
+
+    cache.delete('item_navbar_active')  # Обнуление кэша идентификатора id set JS active links
+
     cache.set('emptyext', dict( title=arg_title or 'Сообщение сервера' , mes=arg_mes or 'Сервер отклонил обработку' ) )
     return redirect('emptyext')
 
@@ -43,10 +48,10 @@ def AdvPanel_prof(request):
 
     cache.set('item_navbar_active','item-navbar-admpanel')
 
+    """Настройки на уровне рукГруппы закрыты.
+    РукПроекта не готово к полному сопровождению"""
     return redirect('listprof_lvl30', page=1)
 
-    # Настройки на уровне рукГруппы закрыты
-    # РукПроекта не готово к полному сопровождению
 
     user = request.user
     type_status = type_status_user(user)
@@ -86,19 +91,24 @@ def AdvPanel_prof(request):
         return render(request,'advuser/header_panel.html', dict(form=form, error=None))
 
 
-# url: updpermuser
-# Изменение levelperm -> status_id  только для рукГрупп
 @login_required
 def UpdStatus_user(request):
-    """ Контроллер обраотки изменений status_id
+    """Контроллер обраотки изменений status_id.
     Изменения осуществляются только рукГрупп
-    """
+    url: updpermuser"""
+
+
+    # JS set adctive links не настроено !!!
+    # в нужном месте установить код
+    # cache.set('item_navbar_active','item-navbar-admpanel') # JS set active links
+
 
     def return_render(arg_form:UpdStatus_userForm, arg_dc:dict):
-        """ Локальная процедура для запуска render:
+        """Локальная процедура для запуска render.
         arg_form: UpdStatus_userForm
         arg_dc: dc_session = request.session['UpdStatus_user']
         return render with cont form and dc_session """
+
         cont = dict(form=arg_form)
         cont.update(arg_dc)
 
@@ -221,7 +231,6 @@ def UpdStatus_user(request):
         return return_render(form, dc_session)
 
 
-
 @login_required
 def UpdPassword_user(request):
     """ Контроллер изменения пароля участника проекта
@@ -242,6 +251,9 @@ def UpdPassword_user(request):
     if type_status.levelperm < 40 :
         return redirect_empty(arg_title='Нет прав',
                               arg_mes='Нет прав на создание профиля участника проекта')
+
+    cache.set('item_navbar_active','item-navbar-profile')   #JS set adctive link
+
 
     if request.method == 'POST':
         form = UpdPassword_byHeadForm(request.POST)
@@ -321,6 +333,8 @@ def UpdPsw_byUser(request):
 
     user = getUser(request.user)
 
+    cache.set('item_navbar_active','item-navbar-profile')   #JS set adctive link
+
     if request.method == 'POST':
 
         form = UpdPsw_byUserForm(request.POST)
@@ -379,12 +393,15 @@ def UpdPsw_byUser(request):
         return render (request, 'advuser/upd_password_by_user.html' , res_cont)
 
 
-
-# Создание профиля для участника проекта
-# url /advuser/addprof_member
 @login_required
 def AddProf_member(request):
-    """ Для рукГрупп -> создание профиля участников проекта """
+    """Для рукГрупп -> создание профиля участников проекта."""
+
+
+    # JS set adctive links не настроено !!!
+    # в нужном месте установить код
+    # cache.set('item_navbar_active','item-navbar-admpanel') # JS set active links
+
 
     from .serv_typestatus import type_status_user
 
@@ -406,6 +423,8 @@ def AddProf_member(request):
         else:
             return redirect_empty(arg_title='Сообщение сервера', arg_mes='Наставник не определен')
 
+
+    cache.set('item_navbar_active','item-navbar-admpanel')
 
     if request.method == 'POST':
         form = AddProf_memberForm(request.POST)
@@ -487,14 +506,19 @@ def com_proc_render(arg_dc_cach:dict):
     return render(request, str_html, dc_cont)
 
 
-"""Только для рукГруппы.
-
-Вместо RegisterExt_profForm
-url: updprofiluser
-name: updprofiluser
-"""
 def Modf_prof_byheader(request):
-    """ Для рукГрупп -> изменение профиля участников проекта """
+    """Для рукГрупп -> изменение профиля участников проекта.
+
+    url: updprofiluser
+    name: updprofiluser
+    Вместо RegisterExt_profForm"""
+
+
+    # JS set adctive links не настроено !!!
+    # в нужном месте установить код
+    # cache.set('item_navbar_active','item-navbar-admpanel') # JS set active links
+
+
 
     from .modify_models import get_dictData_init_Form
     from .serv_advuser import Com_proc_advuser
@@ -513,7 +537,8 @@ def Modf_prof_byheader(request):
             arg_dc_cach['dc_cont'] = dc_session
 
         else:
-            return redirect_empty(arg_title='Отказ сервера обработки запроса', arg_mes='Данные устарели: пользователь не определен' )
+            return redirect_empty(arg_title='Отказ сервера обработки запроса',
+                arg_mes='Данные устарели: пользователь не определен' )
 
 
         if form.is_valid():
@@ -544,7 +569,8 @@ def Modf_prof_byheader(request):
         try:
             # cache инициализируется из AdvPanel_prof
             if not cache.has_key('Modf_prof_byheader'):
-                return redirect_empty(arg_title='Отказ сервера обработки запроса', arg_mes='Данные устарели: пользователь не определен')
+                return redirect_empty(arg_title='Отказ сервера обработки запроса',
+                    arg_mes='Данные устарели: пользователь не определен')
 
             parentuser = request.user
             username = cache.get('Modf_prof_byheader')
@@ -611,6 +637,8 @@ def Modf_prof_byuser(request):
     parentuser = Com_proc_advuser.get_user_cons(user)
     if parentuser is None:
         return redirect_empty(arg_mes='Сервер отклонил обработку: наставник не определен' )
+
+    cache.set('item_navbar_active','item-navbar-profile')
 
     if request.method == "POST":
         form = Modf_prof_byuserForm(request.POST)
@@ -684,6 +712,8 @@ def AddProf_quest(request):
     if parentuser is None:
         return redirect_empty(arg_mes='Наставник не определен')
 
+
+    cache.set('item_navbar_active','item-navbar-profile')
 
     if request.method == 'POST':
 
@@ -847,11 +877,11 @@ def Table_profils_lev30(request, page):
     """
 
     from .modify_models import get_list_prof_memb
-    from advuser.serv_typestatus import type_status_user
-    from .forms import Templ_profForm
+    # from advuser.serv_typestatus import type_status_user
+    # from .forms import Templ_profForm
 
     user = request.user
-    type_status = type_status_user(user)
+    # type_status = type_status_user(user)
 
     res_data_prof = get_list_prof_memb(user, arg_list='10,20,30', num_rows=5, sel_page=page)
     if res_data_prof is None:
@@ -862,9 +892,6 @@ def Table_profils_lev30(request, page):
         return redirect_empty(arg_title='Сообщение сервера', arg_mes='Нет данных построения списка')
 
     dc_page = res_data_prof.res_dict
-    #res_list = Templ_profForm.conv_dict_for_html(res_list)  # конвертирование полей, имеющие значение 'Нет'
-
-    #s = json.dumps(res_list, ensure_ascii=False)
 
 
     num_pages = []
@@ -875,6 +902,8 @@ def Table_profils_lev30(request, page):
 
     cont = dict(
         rows=res_list, dc_page=dc_page, num_pages=num_pages, filter=filter)
+
+    cache.set('item_navbar_active','item-navbar-admpanel')
 
     return render(request, 'advuser/prof_table_format_short_ext.html', cont)
 
@@ -962,13 +991,11 @@ def Profile(request):
         return redirect('empty', mes=idmes)
 
 
-
-"""
-Перенаправление на редактирование профиля из списка
-url: updmesdata<str:mes>  name:updmesdata
-"""
 def Redir_upd_prof_listProf(request, mes):
-    """ Перенаправление на редактирование профиля из списка участников рукГруппы """
+    """Перенаправление на редактирование профиля из списка.
+    url: updmesdata<str:mes>  name:updmesdata
+    """
+
     user = request.user
 
     parentuser = Com_proc_advuser.get_user_cons(mes)
@@ -978,11 +1005,9 @@ def Redir_upd_prof_listProf(request, mes):
     if user.username != parentuser.username:
         return redirect_empty(arg_title='Права редактирования', arg_mes='Нет прав на редактирование профиля')
 
-    #cache.set('Upd_prof_member', mes)
-
     cache.set('AdvPanel_prof', mes)
 
-    return redirect ('modpanelprof')
+    return redirect ('modpanelprof')    # перенаправление на AdvPanel_prof
 
 
 """

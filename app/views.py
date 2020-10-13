@@ -5,21 +5,18 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
 
-"""
- Ajax  обработчик <script> ...</script> from  base_layout.html
- Обработка специальных сообщений через модальноеОкно в браузере
- key in dict for session:  system_send_mes
-    Структура request.session['system_send_mes']:
-        dict(title='Сессия', mes=s_mes, res='exists')
-        res='exists' - идентификатор для отображения в диалоговом окне
-        title='Сессия' заголовок сообщения
-        mes=s_mes      строка сообщения
- url:  sendspecialmes
- name: sendspecialmes
-"""
 def Send_special_message(request):
-
-    #type_requery = request.method
+    """Ajax  обработчик <script> ...</script> from  base_layout.html.
+    Обработка специальных сообщений через модальноеОкно в браузере
+    key in dict for session:  system_send_mes
+        Структура request.session['system_send_mes']:
+            dict(title='Сессия', mes=s_mes, res='exists')
+            res='exists' - идентификатор для отображения в диалоговом окне
+            title='Сессия' заголовок сообщения
+            mes=s_mes      строка сообщения
+    url:  sendspecialmes
+    name: sendspecialmes
+    """
 
     data = request.GET
     if data:
@@ -57,13 +54,19 @@ def Send_special_message(request):
 
 
  #url: '/'   name=mainapp
+
+
 @login_required
 def index(request):
+    """Контроллер Home page."""
+
     from advuser.serv_typestatus import type_status_user
 
     #request.session.clear_expired()  # обнуление буфера session
     status = type_status_user(request.user)
     cont_dc = dict(levelperm=status.levelperm)
+
+    cache.set('item_navbar_active','item-navbar-mainapp')   #JS select active
 
     return render(request, 'app/index.html', cont_dc)
 
@@ -72,12 +75,10 @@ def logout(request):
     return render(request, 'registration/logout.html')
 
 
-"""
-url: name=emptyext
-/emptyext/
-Контроллер empty с использованием cache
-"""
 def Empty_ext(request):
+    """url: name=emptyext     /emptyext/.
+    Контроллер empty с использованием cache"""
+
     cont = {}
 
     try:
