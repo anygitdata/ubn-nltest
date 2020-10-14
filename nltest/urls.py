@@ -34,11 +34,13 @@ urlpatterns = [
 
     path('profile/', Profile, name='profile' ),
 
-    # для обработчика Ajax 
+    # для обработчика Ajax
     path('sendspecialmes', Send_special_message, name='sendspecialmes'),
 
     # Использование контроллера для emptyext with cache
     path('emptyext/', Empty_ext, name='emptyext'),
+
+    path('preds/', include('preds.urls') ),
 
     path('', include('app.urls'))
 

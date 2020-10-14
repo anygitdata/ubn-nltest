@@ -1,3 +1,6 @@
+"""advuser.views.
+
+обработка ссылок path for advuser"""
 
 from django.shortcuts import render, redirect
 from django.core.cache import cache
@@ -11,7 +14,6 @@ from .forms import (Base_profForm, AddProf_memberForm, AdvPanel_profForm,
 
 from .serv_advuser import Com_proc_advuser
 from .serv_typestatus import type_status_user
-# import json
 
 
 def modf_data_dict(arg_dc:dict)->dict:
@@ -626,9 +628,6 @@ def Modf_prof_byheader(request):
             return redirect_empty()
 
 
-"""
-Изменение профиля самими участниками проекта proj_member
-"""
 @login_required
 def Modf_prof_byuser(request):
     """ Изменение профиля самими участниками проекта """
