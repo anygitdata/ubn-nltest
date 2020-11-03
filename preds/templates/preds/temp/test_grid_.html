@@ -1,0 +1,180 @@
+{% load static %}
+{% load ext_data_user %}
+
+<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Страница отладки greed</title>
+
+    <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- <link rel="stylesheet" href="{% static 'app/css/fontAwesome/css/font-awesome.min.css' %}"> -->
+    <link href="{% static 'app/css/jquery-ui-1.10.3.min.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- Собственные настройки -->
+    <link href="{% static 'preds/css/root_var.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'preds/css/root_css.css' %}" rel="stylesheet" type="text/css" />
+
+
+<style>
+     /* font-family: 'PT Sans Narrow', sans-serif; */
+   @font-face {
+    font-family: 'PT Sans Narrow'; /* Гарнитура шрифта */
+    src: url("{% static '/app/css/PT_Sans_Narrow/PTSansNarrow-Regular.ttf' %}");  /* 400 */
+   }
+
+   @font-face {
+    font-family: 'PT Sans Narrow Bold';     /* 700S */
+    src: url("{% static 'app/css/PT_Sans_Narrow/PTSansNarrow-Bold.ttf' %}");
+   }
+
+   /* Подключение шрифта Roboto Condensed */
+   /* font-family: 'Roboto Condensed', sans-serif; */
+   @font-face {
+    font-family: 'Roboto Condensed Light';   /* 300 */
+    src: url("{% static 'app/css/Roboto_Condensed/RobotoCondensed-Light.ttf' %}");
+   }
+
+   @font-face {
+    font-family: 'Roboto Condensed Regular';  /* 400 */
+    src: url("{% static 'app/css/Roboto_Condensed/RobotoCondensed-Regular.ttf' %}");
+   }
+
+   @font-face {
+    font-family: 'Roboto Condensed Bold';
+    src: url("{% static 'app/css/Roboto_Condensed/RobotoCondensed-Bold.ttf' %}"); /*700 */
+   }
+</style>
+
+<style>
+    .card-header {font-size: 0.75rem;}
+    .card-footer {font-size: 0.75rem;}
+    .card-link {font-size: 0.65rem;}
+    .card-text{font-size: 0.8rem;}
+
+    /* .card-title{font-size: 1rem;} */
+
+    ul {list-style-type: disc;}
+    li {padding-left: 0px; margin-left: 0;}
+
+</style>
+
+</head>
+<body>
+
+    <div>
+        <div class="container-fluid px-0">
+            <div class="row mx-auto">
+                <div class="col">
+                    <img class="mx-auto d-block" style="display: inline-block; width: 95%;" src="{% static 'preds/img_edsm/edsmart.png' %}" alt="">
+                </div>
+                <div class="col">
+                    <div class="pt-2" style="line-height: calc(var(--base) * var(--ms1)); color:green">
+                        <div style="font-size: 0.9em; font-weight:600">УМНАЯ ЕДА</div>
+                        <div style="font-size: 0.7em;">БАЛАНС ПИТАНИЯ</div>
+                        <div style="font-size: 0.6em;">БЕЗ ЛИШНИХ КАЛОРИЙ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <div>
+                        <div class="pl-3" style="font-size: 0.9em; font-weight:600">ЧТО ЭТО?</div>
+                        <ul class="" style="font-size: 0.65em;">
+                            <li>полноценное питание</li>
+                            <li>"ластик" для лишнего веса</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div style="font-size: 0.9em; font-weight:600">ДЛЯ КОГО?</div>
+                    <ul class="" style="font-size: 0.65em;">
+                        <li>для активных</li>
+                        <li>для модных и современных</li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+        <div class="row">
+            <div class="col-12 col-sm-4">
+                <div class="card">
+                    <div class="card-header py-1">О питании</div>
+
+                    <div class="card-body px-1">
+                        <h5 class="card-title">Основа жизнедеятельности - энергия</h5>
+                        <p class="card-text pr-2 mb-1">Любое заболевание связано с нарушением биоэнергетического баланса и состояния имунной системы</p>
+                        <p class="card-text pr-2 mb-1">Все, кроме кислорода, человек получает из пищи. </p>
+                        <a href="#" class="card-link">Подробно</a>
+                        <div class="card-footer text-muted py-1">Раздел "Восстановление баланса энергии"</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-sm-4">
+                <div class="card">
+                    <div class="card-header py-1">Страхи, сомнения ...</div>
+
+                    <div class="card-body px-1">
+                        <h5 class="card-title">Управление через страх</h5>
+                        <p class="card-text pr-2 mb-1">Как психологическое состояние страх далеко не всегда является реакцией на серьезную непосредственную опасность.</p>
+                        <p class="card-text pr-2 mb-1">Проявляется страх по-разному: это и тревоги, и беспокойства, и...</p>
+                        <a href="#" class="card-link">Подробно</a>
+                        <div class="card-footer text-muted py-1">Раздел "Преодоление страха"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-4">
+                <div class="card">
+                    <div class="card-header py-1">Нервный жор - истоки</div>
+
+                    <div class="card-body px-1">
+                        <h5 class="card-title">Бывает ли у вас нервный жор? <br>
+                            Как справляетесь?</h5>
+                        <p class="card-text pr-2 mb-1">Когда всё бесит, и начинаешь жрать всё подряд, и становится только хуже.</p>
+                        <p class="card-text pr-2 mb-1">Распространенная проблема, которая мешает жить, особенно тем, у кого ...</p>
+                        <a href="#" class="card-link">Подробно</a>
+                        <div class="card-footer text-muted py-1">Раздел "Нервный жор истоки и пути регулирования"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-4">
+                <div class="card">
+                    <div class="card-header py-1">Функциональный продукт</div>
+
+                    <div class="card-body px-1">
+                        <h5 class="card-title">Функциональный продукт<br />
+                            Что это за продукты?
+                        </h5>
+                        <p class="card-text pr-2 mb-1">Функциональный продукт это продукты обогащенные различными ингредиентами  <br>
+                            Несмотря на то, что ФП не являются лекарством, их свойства несут <i>колоссальную</i> пользу для организма</p>
+                        <p class="card-text pr-2 mb-1">Распространенная проблема, которая мешает жить, особенно тем, у кого ...</p>
+                        <a href="#" class="card-link">Подробно</a>
+                        <div class="card-footer text-muted py-1">Раздел "Нервный жор истоки и пути регулирования"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'app/js/jquery_12.min.js' %}"></script>
+
+
+    <link href="{% static 'app/css/jquery-ui-1.10.3.min.css' %}" rel="stylesheet" type="text/css" />
+    <script src="{% static 'app/js/popper.min.js' %}"></script>
+    <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+
+
+</body>
+</html>

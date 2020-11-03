@@ -41,6 +41,8 @@ urlpatterns = [
     path('emptyext/', Empty_ext, name='emptyext'),
 
     path('preds/', include('preds.urls') ),
+    path('preds/greed/', include('preds.urls')),  # тестирование структуры greed for mobile
+
 
     path('', include('app.urls'))
 
