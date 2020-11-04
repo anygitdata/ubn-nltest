@@ -49,11 +49,6 @@
 </style>
 
 <style>
-    .card-header {font-size: 0.75rem;}
-    .card-footer {font-size: 0.75rem;}
-    .card-link {font-size: 0.65rem;}
-    .card-text{font-size: 0.8rem;}
-
 
     .title_info{
         font-family: 'PT Sans Narrow Bold', sans-serif;
@@ -64,8 +59,12 @@
     h2.title_info{font-size: 150%;}
     h3.title_info{font-size: 100%;}
 
+    DIV.title_info{
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-size: 80%;}
+
     /* Форматирование списка */
-    .ul_info_1, .ul_info_2 {
+    .ul_info_1, .ul_info_2, .ul_info_3 {
     padding:0;
     list-style: none;
     line-height: 1.3;
@@ -82,6 +81,7 @@
     }
 
     .ul_info_2 li:before{content: "\2714";}
+    .spn_img {margin-right: 0.4em;}
 
 </style>
 
@@ -91,7 +91,7 @@
     <div>
         <div class="container-fluid px-0">
             <div class="row mx-auto justify-content-around">
-                <div class="col-4">
+                <div class="col-5">
                     <img class="d-block" style="display: inline-block; width: 95%;" src="{% static 'preds/img_edsm/edsmart.png' %}" alt="">
                 </div>
                 <div class="col-auto px-0 mr-2">
@@ -103,8 +103,8 @@
                 </div>
             </div>
 
-            <div class="row mt-3 mx-auto justify-content-around">
-                <div class="col col-sm-4 px-0">
+            <div class="row mt-3 mx-auto justify-content-center">
+                <div class="col col-sm-5 px-0">
                     <div class="ml-2">
                         <h2 class="mb-1 title_info">ЧТО ЭТО?</h2>
                         <div>
@@ -135,9 +135,94 @@
 
             </div>
 
+            <div class="row mt-3 mx-auto justify-content-center">
+                <div class="col col-sm-5 px-0" >
+                    <div class="ml-2">
+                        <h2 class="mb-1 title_info">ТЫ ПОЛУЧАЕШЬ</h2>
+                        <div>
+                            <ul class="ul_info_3 short-txt">
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_001.png'%}" alt=""></span>фигуры мечты</li>
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_002.png'%}" alt=""></span>удовельствие от вкуса</li>
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_003.png'%}" alt=""></span>отличное настроение</li>
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_004.png'%}" alt=""></span>сильный иммунитет</li>
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_005.png'%}" alt=""></span>полезные пищевые привычки</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col col-sm-5 px-0" >
+                    <div class="ml-2">
+                        <h2 class="mb-1 title_info title_info2">ТЫ ИЗБАВЛЯЕШЬСЯ</h2>
+                        <div>
+                            <ul class="ul_info_3 short-txt">
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_006.png'%}" alt=""></span>лишнего веса</li>
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_007.png'%}" alt=""></span>жировых отложений</li>
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_008.png'%}" alt=""></span>отеков</li>
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_009.png'%}" alt=""></span>вредной еды</li>
+                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_010.png'%}" alt=""></span>тяжести в желудке</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3 mx-auto justify-content-center">
+                <div class="col-5 col-sm-5 px-0" >
+                    <div class="row pl-2">
+                        <div class="col">
+                            <h2 class="mb-1 title_info title_info2">
+                                <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
+                                УДОБНО</h2>
+                                <div class="title_info">возьми с собой и замени <br> завтрак, обед или ужин</div>
+                        </div>
+
+                        <div class="w-100"></div>
+
+                        <div class="col" style="position: relative;">
+                            <h2 class="mb-1 title_info title_info2">
+                                <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
+                                ПОЛЕЗНО</h2>
+                            <div class="title_info" style="font-family: 'PT Sans Narrow Bold', sans-serif;"> В одной порции:</div>
+                            <div style="position: absolute; right: 5em; bottom: -0.5em; z-index: -1;">
+                                <img src="{% static 'preds/img_edsm/eds_110.png' %}" alt="">
+                            </div>
+                            <ul class="ul_info_1">
+                                <li>белки 22г,жиры 5г,углеводы 15г</li>
+                                <li>12 витаминов + 11 минералов</li>
+                                <li>ферменты</li>
+                                <li>клетчатка</li>
+                                <li>менее 200 ккал</li>
+                                <li>нет синтетических ароматизаторов, красителей и консервантов</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-7 col-sm-5 px-0" >
+
+                    <div class="col-auto">
+                        <div class="col w-100">
+                            <h2 class="mb-1 title_info title_info2">
+                                <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
+                                ВЫГОДНО </h2>
+                        </div>
+                        <div>
+                            <img style="width: 95%;" src="{% static 'preds/img_edsm/eds_111.png'%}" alt="">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
 
     </div>
+
 
     <script src="{% static 'app/js/jquery_12.min.js' %}"></script>
 
