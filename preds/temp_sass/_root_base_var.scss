@@ -1,0 +1,17 @@
+
+
+// Базовые коэффициенты
+$ratio: 1.2;
+$base: 1;
+$base-em: $base * 1em;
+$base-px: $base * 16px;
+
+/* Набор градаций */
+$ms0: 1;
+$ms1: $ratio;   /* 1.2 */
+$ms2: $ratio * $ms1;  /* 1.44 */
+$ms3: $ratio * $ms2; /* 1.728 */
+$ms4: $ratio * $ms3; /* 2.074 */
+$ms5: $ratio * $ms4; /* 2.488 */
+$ms6: $ratio * $ms5; /* 2.986 */
+$ms7: $ratio * $ms6; /* 3.583 */

@@ -1,0 +1,94 @@
+
+@import 'root_base_var';  // набор базовых коэфффициентов
+
+
+// Миксины
+@mixin  mx_font_sizeSmaller ($val) {
+    font-size: $base-em  * $val / $ms1;
+}
+
+@mixin  mx_font_sizeBigger ($val) {
+    font-size: $base-em  * $val * $ms1;
+}
+
+@mixin  mx_font_sizeEM($val) {
+    font-size: $base-em *  $val
+}
+
+@mixin  mx_font_sizePX($val) {
+    font-size: $base-px * $val
+}
+
+/////////////////////////////////////
+
+a{
+    &:link{
+        color: #1476b8;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    &:visited{ color: #1430b8;}
+    &:hover{text-decoration: underline;}
+    &:active{color: #b81414;}
+}
+
+
+html {
+    @include mx_font_sizeEM($ms0);  // font-size: $base-em  * $ms0;
+    line-height: $base  * $ms2;
+    }
+
+h1{ @include mx_font_sizeEM($ms4); // font-size: $base-em  * $ms4;
+}
+
+h2{ @include mx_font_sizeEM($ms3);}
+
+h3{ @include mx_font_sizeEM($ms2);}
+
+h4{ @include mx_font_sizeEM($ms1);}
+
+h5, h6{ @include mx_font_sizeEM($ms0);}
+
+
+h3, h2 {line-height: $base  * $ms1;}
+h1 {line-height: $base  * $ms0;}
+
+
+
+@media (min-width: 480px){
+    html{ @include mx_font_sizePX($ms1);}
+}
+
+@media (min-width: 768px){
+    html{ @include mx_font_sizePX($ms2);}
+
+    h3 { @include mx_font_sizeEM($ms3);}
+    h2 { @include mx_font_sizeEM($ms4);}
+    h1 { @include mx_font_sizeEM($ms5);}
+}
+
+@media (min-width: 1024px){
+    html{ @include mx_font_sizePX($ms3);}
+
+    h2 { @include mx_font_sizeEM($ms5);}
+    h1 { @include mx_font_sizeEM($ms6);}
+}
+
+@media (min-width: 1360px){
+    html{ @include mx_font_sizePX($ms4);}
+    h1 { @include mx_font_sizeEM($ms7);}
+}
+
+
+// Уменьшенные размеры заголовочных шрифтов
+.u-h1Smaller{ @include mx_font_sizeSmaller($ms4)}
+.u-h2Smaller{ @include mx_font_sizeSmaller($ms3)}
+.u-h3Smaller{ @include mx_font_sizeSmaller($ms2)}
+.u-h4Smaller{ @include mx_font_sizeSmaller($ms1)}
+.u-h5Smaller{ @include mx_font_sizeSmaller($ms0)}
+.u-h6Smaller{ @include mx_font_sizeSmaller($ms0)}
+
+// Размер шрифта для абзаца
+.u-textSmaller{font-size: ($base-em / $ms1);}
+.u-textBigger{@include mx_font_sizeEM($ms1);  }

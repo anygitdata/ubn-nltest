@@ -1,0 +1,100 @@
+@charset "UTF-8";
+/* Набор градаций */
+/* 1.2 */
+/* 1.44 */
+/* 1.728 */
+/* 2.074 */
+/* 2.488 */
+/* 2.986 */
+/* 3.583 */
+a:link {
+  color: #1476b8;
+  font-weight: bold;
+  text-decoration: none; }
+a:visited {
+  color: #1430b8; }
+a:hover {
+  text-decoration: underline; }
+a:active {
+  color: #b81414; }
+
+html {
+  font-size: 1em;
+  line-height: 1.44; }
+
+h1 {
+  font-size: 2.0736em; }
+
+h2 {
+  font-size: 1.728em; }
+
+h3 {
+  font-size: 1.44em; }
+
+h4 {
+  font-size: 1.2em; }
+
+h5, h6 {
+  font-size: 1em; }
+
+h3, h2 {
+  line-height: 1.2; }
+
+h1 {
+  line-height: 1; }
+
+@media (min-width: 480px) {
+  html {
+    font-size: 19.2px; } }
+@media (min-width: 768px) {
+  html {
+    font-size: 23.04px; }
+
+  h3 {
+    font-size: 1.728em; }
+
+  h2 {
+    font-size: 2.0736em; }
+
+  h1 {
+    font-size: 2.48832em; } }
+@media (min-width: 1024px) {
+  html {
+    font-size: 27.648px; }
+
+  h2 {
+    font-size: 2.48832em; }
+
+  h1 {
+    font-size: 2.985984em; } }
+@media (min-width: 1360px) {
+  html {
+    font-size: 33.1776px; }
+
+  h1 {
+    font-size: 3.5831808em; } }
+.u-h1Smaller {
+  font-size: 1.728em; }
+
+.u-h2Smaller {
+  font-size: 1.44em; }
+
+.u-h3Smaller {
+  font-size: 1.2em; }
+
+.u-h4Smaller {
+  font-size: 1em; }
+
+.u-h5Smaller {
+  font-size: 0.8333333333em; }
+
+.u-h6Smaller {
+  font-size: 0.8333333333em; }
+
+.u-textSmaller {
+  font-size: 0.8333333333em; }
+
+.u-textBigger {
+  font-size: 1.2em; }
+
+/*# sourceMappingURL=root_css.css.map */
