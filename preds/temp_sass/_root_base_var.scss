@@ -1,12 +1,11 @@
 
 
-// Базовые коэффициенты
+/* Набор градаций */
 $ratio: 1.2;
 $base: 1;
 $base-em: $base * 1em;
 $base-px: $base * 16px;
 
-/* Набор градаций */
 $ms0: 1;
 $ms1: $ratio;   /* 1.2 */
 $ms2: $ratio * $ms1;  /* 1.44 */
@@ -15,3 +14,35 @@ $ms4: $ratio * $ms3; /* 2.074 */
 $ms5: $ratio * $ms4; /* 2.488 */
 $ms6: $ratio * $ms5; /* 2.986 */
 $ms7: $ratio * $ms6; /* 3.583 */
+
+
+/* Базовые настройки */
+:root{
+    box-sizing: border-box;
+    font-size: calc(1vw + 0.6em);
+}
+
+@media (min-width:1200px){
+    :root{font-size: 1.125em;}
+}
+
+
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+
+body{
+    margin: 0;
+}
+
+a{
+    &:link{
+        color: #1476b8;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    &:visited{color: #1430b8;}
+    &:hover{text-decoration: underline;}
+    &:active{color: #b81414;}
+}

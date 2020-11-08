@@ -115,25 +115,22 @@ h1 {
 @font-face {
   font-family: 'PT Sans Narrow';
   /* Гарнитура шрифта */
-  src: url(../PT_Sans_Narrow/PTSansNarrow-Regular.ttf);
+  src: url("PT_Sans_Narrow/PTSansNarrow-Regular.ttf");
   /* 400 */ }
 @font-face {
   font-family: 'PT Sans Narrow Bold';
-  /* 700S */
-  src: url(../PT_Sans_Narrow/PTSansNarrow-Bold.ttf); }
+  src: url("PT_Sans_Narrow/PTSansNarrow-Bold.ttf"); }
 /* Подключение шрифта Roboto Condensed */
 /* font-family: 'Roboto Condensed', sans-serif; */
 @font-face {
   font-family: 'Roboto Condensed Light';
-  /* 300 */
-  src: url(../Roboto_Condensed/RobotoCondensed-Light.ttf); }
+  src: url(Roboto_Condensed/RobotoCondensed-Light.ttf); }
 @font-face {
   font-family: 'Roboto Condensed Regular';
-  /* 400 */
-  src: url(../Roboto_Condensed/RobotoCondensed-Regular.ttf); }
+  src: url(Roboto_Condensed/RobotoCondensed-Regular.ttf); }
 @font-face {
   font-family: 'Roboto Condensed Bold';
-  src: url(../Roboto_Condensed/RobotoCondensed-Bold.ttf);
+  src: url(Roboto_Condensed/RobotoCondensed-Bold.ttf);
   /*700 */ }
 
 /*# sourceMappingURL=root_css.css.map */

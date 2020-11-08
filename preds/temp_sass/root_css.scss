@@ -1,6 +1,14 @@
 
 @import 'root_base_var';  // набор базовых коэфффициентов
 
+// a:link{
+//     color: #1476b8;
+//     font-weight: bold;
+//     text-decoration: none;
+// }
+// a:visited{color: #1430b8;}
+// a:hover{text-decoration: underline;}
+// a:active{color: #b81414;}
 
 // Миксины
 @mixin  mx_font_sizeSmaller ($val) {
@@ -20,19 +28,6 @@
 }
 
 /////////////////////////////////////
-
-a{
-    &:link{
-        color: #1476b8;
-        font-weight: bold;
-        text-decoration: none;
-    }
-
-    &:visited{ color: #1430b8;}
-    &:hover{text-decoration: underline;}
-    &:active{color: #b81414;}
-}
-
 
 html {
     @include mx_font_sizeEM($ms0);  // font-size: $base-em  * $ms0;
@@ -55,8 +50,8 @@ h3, h2 {line-height: $base  * $ms1;}
 h1 {line-height: $base  * $ms0;}
 
 
-
-@media (min-width: 480px){
+// медиа запросы
+@media (min-width: 576px){
     html{ @include mx_font_sizePX($ms1);}
 }
 
@@ -68,14 +63,14 @@ h1 {line-height: $base  * $ms0;}
     h1 { @include mx_font_sizeEM($ms5);}
 }
 
-@media (min-width: 1024px){
+@media (min-width: 992px){
     html{ @include mx_font_sizePX($ms3);}
 
     h2 { @include mx_font_sizeEM($ms5);}
     h1 { @include mx_font_sizeEM($ms6);}
 }
 
-@media (min-width: 1360px){
+@media (min-width: 1200px){
     html{ @include mx_font_sizePX($ms4);}
     h1 { @include mx_font_sizeEM($ms7);}
 }
@@ -89,6 +84,38 @@ h1 {line-height: $base  * $ms0;}
 .u-h5Smaller{ @include mx_font_sizeSmaller($ms0)}
 .u-h6Smaller{ @include mx_font_sizeSmaller($ms0)}
 
+.u-h2Bigger{@include mx_font_sizeEM($ms1}
+
+
 // Размер шрифта для абзаца
 .u-textSmaller{font-size: ($base-em / $ms1);}
 .u-textBigger{@include mx_font_sizeEM($ms1);  }
+
+
+/* Локальные шрифты */
+@font-face {
+    font-family: 'PT Sans Narrow'; /* Гарнитура шрифта */
+    src: url("PT_Sans_Narrow/PTSansNarrow-Regular.ttf");  /* 400 */
+   }
+
+   @font-face {
+    font-family: 'PT Sans Narrow Bold';
+    src: url("PT_Sans_Narrow/PTSansNarrow-Bold.ttf");
+   }
+
+   /* Подключение шрифта Roboto Condensed */
+   /* font-family: 'Roboto Condensed', sans-serif; */
+   @font-face {
+    font-family: 'Roboto Condensed Light';
+    src: url(Roboto_Condensed/RobotoCondensed-Light.ttf);
+   }
+
+   @font-face {
+    font-family: 'Roboto Condensed Regular';
+    src: url(Roboto_Condensed/RobotoCondensed-Regular.ttf);
+   }
+
+   @font-face {
+    font-family: 'Roboto Condensed Bold';
+    src: url(Roboto_Condensed/RobotoCondensed-Bold.ttf); /*700 */
+   }
