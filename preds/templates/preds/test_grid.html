@@ -19,55 +19,10 @@
 
     <link rel="stylesheet" href="{% static 'app/css/root_css.css' %}">
 
-
-<!-- <style>
-     /* font-family: 'PT Sans Narrow', sans-serif; */
-   @font-face {
-    font-family: 'PT Sans Narrow'; /* Гарнитура шрифта */
-    src: url("{% static '/app/css/PT_Sans_Narrow/PTSansNarrow-Regular.ttf' %}");
-    /* src: url(/app/static/app/PT_Sans_Narrow/PTSansNarrow-Regular.ttf) */
-   }
-
-   @font-face {
-    font-family: 'PT Sans Narrow Bold';     /* 700S */
-    src: url("{% static 'app/css/PT_Sans_Narrow/PTSansNarrow-Bold.ttf' %}");
-   }
-
-   /* Подключение шрифта Roboto Condensed */
-   /* font-family: 'Roboto Condensed', sans-serif; */
-   @font-face {
-    font-family: 'Roboto Condensed Light';   /* 300 */
-    src: url("{% static 'app/css/Roboto_Condensed/RobotoCondensed-Light.ttf' %}");
-   }
-
-   @font-face {
-    font-family: 'Roboto Condensed Regular';  /* 400 */
-    src: url("{% static 'app/css/Roboto_Condensed/RobotoCondensed-Regular.ttf' %}");
-   }
-
-   @font-face {
-    font-family: 'Roboto Condensed Bold';
-    src: url("{% static 'app/css/Roboto_Condensed/RobotoCondensed-Bold.ttf' %}"); /*700 */
-   }
-</style> -->
-
 <style>
 
-    .title_info{
-        font-family: 'PT Sans Narrow Bold', sans-serif;
-        margin-bottom: 0;
-        font-size: 90%;
-    }
-
-    h2.title_info{font-size: 150%;}
-    h3.title_info{font-size: 100%;}
-
-    DIV.title_info{
-        font-family: 'PT Sans Narrow', sans-serif;
-        font-size: 80%;}
-
     /* Форматирование списка */
-    .ul_info_1, .ul_info_2, .ul_info_3 {
+    /* .ul_info_1, .ul_info_2, .ul_info_3 {
     padding:0;
     list-style: none;
     line-height: 1.3;
@@ -81,9 +36,9 @@
         color: #666;
         content: "\2022";
         transition-duration: 0.5s;
-    }
+    } */
 
-    .ul_info_2 li:before{content: "\2714";}
+    /* .ul_info_2 li:before{content: "\2714";} */
     .spn_img {margin-right: 0.4em;}
 
 </style>
@@ -93,25 +48,27 @@
 
     <div>
         <div class="container-fluid px-0">
-            <div class="row mx-auto justify-content-around">
-                <div class="col-5">
-                    <img class="d-block" style="display: inline-block; width: 95%;" src="{% static 'preds/img_edsm/edsmart.png' %}" alt="">
+            <div class="row mx-auto justify-content-around" >
+                <div class="col-3 my-auto px-0">
+                    <img class="d-block" style="width: 100%; max-width: 160px; min-width: 50px;"  src="{% static 'preds/img_edsm/eds_160.png' %}" alt="">
                 </div>
-                <div class="col-auto px-0 mr-2">
-                    <div class="pt-2 mx-auto" style="color:green">
-                        <h2 class="title_info">УМНАЯ ЕДА</h2>
-                        <h3 class="title_info">БАЛАНС ПИТАНИЯ</h3>
-                        <h4 class="title_info">БЕЗ ЛИШНИХ КАЛОРИЙ</h4>
+                <div class="col-auto px-0">
+                    <div class="py-2 mx-auto" style="color:green">
+                        <h3 class="eds_title_info">УМНАЯ ЕДА</h3>
+                        <h4 class="eds_title_info">БАЛАНС ПИТАНИЯ</h4>
+                        <h5 class="eds_title_info">БЕЗ ЛИШНИХ КАЛОРИЙ</h5>
                     </div>
                 </div>
             </div>
 
+            <div class="mx-auto" style="width: 95%; height: 2px; background-color: green;" ></div>
+
             <div class="row mt-3 mx-auto justify-content-center">
                 <div class="col col-sm-5 px-0">
                     <div class="ml-2">
-                        <h2 class="mb-1 title_info">ЧТО ЭТО?</h2>
+                        <h3 class="mb-1 eds_title_info">ЧТО ЭТО?</h3>
                         <div>
-                            <ul class="ul_info_1 short-txt">
+                            <ul class="eds_ul_left">
                                 <li>полноценное питание</li>
                                 <li>"ластик" для лишнего веса</li>
                                 <li>еда для занятых</li>
@@ -124,10 +81,10 @@
                     </div>
                 </div>
 
-                <div class="col col-sm-4 px-0">
-                    <h2 class="mb-1 title_info">ДЛЯ КОГО?</h2>
+                <div class="col col-sm-5 px-0">
+                    <h3 class="mb-1 eds_title_info">ДЛЯ КОГО?</h3>
                     <div>
-                        <ul class="ul_info_2 short-txt">
+                        <ul class="eds_ul_right">
                             <li>для активных</li>
                             <li>для модных и современных</li>
                             <li>кто хочет похудеть</li>
@@ -140,57 +97,54 @@
 
             <div class="row mt-3 mx-auto justify-content-center">
                 <div class="col col-sm-5 px-0" >
-                    <div class="ml-2">
-                        <h2 class="mb-1 title_info">ТЫ ПОЛУЧАЕШЬ</h2>
-                        <div>
-                            <ul class="ul_info_3 short-txt">
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_001.png'%}" alt=""></span>фигуры мечты</li>
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_002.png'%}" alt=""></span>удовельствие от вкуса</li>
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_003.png'%}" alt=""></span>отличное настроение</li>
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_004.png'%}" alt=""></span>сильный иммунитет</li>
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_005.png'%}" alt=""></span>полезные пищевые привычки</li>
-                            </ul>
-                        </div>
+                    <h3 class="mb-1 eds_title_info">ТЫ ПОЛУЧАЕШЬ</h3>
+                    <div>
+                        <ul class="eds_ul_none">
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_001.png'%}" alt=""></span>фигуры мечты</li>
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_002.png'%}" alt=""></span>удовельствие от вкуса</li>
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_003.png'%}" alt=""></span>отличное настроение</li>
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_004.png'%}" alt=""></span>сильный иммунитет</li>
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_005.png'%}" alt=""></span>полезные пищевые привычки</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="col col-sm-5 px-0" >
-                    <div class="ml-2">
-                        <h2 class="mb-1 title_info title_info2">ТЫ ИЗБАВЛЯЕШЬСЯ</h2>
-                        <div>
-                            <ul class="ul_info_3 short-txt">
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_006.png'%}" alt=""></span>лишнего веса</li>
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_007.png'%}" alt=""></span>жировых отложений</li>
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_008.png'%}" alt=""></span>отеков</li>
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_009.png'%}" alt=""></span>вредной еды</li>
-                                <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_010.png'%}" alt=""></span>тяжести в желудке</li>
-                            </ul>
-                        </div>
+                    <h3 class="mb-1 eds_title_info">ТЫ ИЗБАВЛЯЕШЬСЯ</h3>
+                    <div>
+                        <ul class="eds_ul_none">
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_006.png'%}" alt=""></span>лишнего веса</li>
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_007.png'%}" alt=""></span>жировых отложений</li>
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_008.png'%}" alt=""></span>отеков</li>
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_009.png'%}" alt=""></span>вредной еды</li>
+                            <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_010.png'%}" alt=""></span>тяжести в желудке</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
             <div class="row mt-3 mx-auto justify-content-center">
-                <div class="col-5 col-sm-5 px-0" >
-                    <div class="row pl-2">
-                        <div class="col">
-                            <h2 class="mb-1 title_info title_info2">
+                <div class="col col-sm-6 pl-0 ml-0 w-100" >
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <h3 class="mb-1 eds_title_info">
                                 <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
-                                УДОБНО</h2>
-                                <div class="title_info">возьми с собой и замени <br> завтрак, обед или ужин</div>
+                                УДОБНО</h3>
+                                <div class="eds_title_info">возьми с собой и замени <br> завтрак, обед или ужин</div>
                         </div>
 
-                        <div class="w-100"></div>
+                        <!-- <div class="w-100"></div> -->
 
-                        <div class="col" style="position: relative;">
-                            <h2 class="mb-1 title_info title_info2">
+                        <div class="col-12 col-md-6" style="position: relative;">
+                            <h3 class="mb-1 eds_title_info">
                                 <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
-                                ПОЛЕЗНО</h2>
+                                ПОЛЕЗНО</h3>
+
                             <div class="title_info" style="font-family: 'PT Sans Narrow Bold', sans-serif;"> В одной порции:</div>
                             <div style="position: absolute; right: 5em; bottom: -0.5em; z-index: -1;">
                                 <img src="{% static 'preds/img_edsm/eds_110.png' %}" alt="">
                             </div>
-                            <ul class="ul_info_1">
+                            <ul class="eds_ul_none">
                                 <li>белки 22г,жиры 5г,углеводы 15г</li>
                                 <li>12 витаминов + 11 минералов</li>
                                 <li>ферменты</li>
@@ -204,20 +158,22 @@
                     </div>
                 </div>
 
-                <div class="col-7 col-sm-5 px-0" >
-
-                    <div class="col-auto">
-                        <div class="col w-100">
-                            <h2 class="mb-1 title_info title_info2">
-                                <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
-                                ВЫГОДНО </h2>
-                        </div>
-                        <div>
-                            <img style="width: 95%;" src="{% static 'preds/img_edsm/eds_111.png'%}" alt="">
-                        </div>
-
+                <div class="row col col-sm-5 px-0" style="position:" >
+                    <h3 class="eds_title_info">
+                        <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
+                        ВЫГОДНО </h3>
+                    <div style="position: absolute; top: 45px;">
+                        <img style="width: 95%;" src="{% static 'preds/img_edsm/eds_111.png'%}" alt="">
                     </div>
                 </div>
+
+            </div>
+
+            <div class="row mt-3 mx-auto">
+                <div class="col ml-2 eds_title_info">
+                    ЕСТЬ ВСЕ, ЧТО ТЕБЕ НУЖНО
+                </div>
+
 
             </div>
 
