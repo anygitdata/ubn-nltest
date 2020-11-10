@@ -1,0 +1,212 @@
+
+
+.menu-container {
+    width: 100%;
+    margin: 20px auto;
+    background: #337AB7;
+}
+.menu-mobile:after {
+    content: "\f0c9";
+    /* font-family: "FontAwesome"; */
+    font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+    font-weight: 900;
+
+    font-size: 38px;
+    line-height: 38px;
+    padding: 0;
+    color: #FFF;
+    float: right;
+    position: relative;
+    transform: translateY(-25%);
+}
+.menu-dropdown-icon:before {
+    content: "\f078";
+    /* font-family: "FontAwesome"; */
+    font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+    font-weight: 900;
+
+    display: none;
+    cursor: pointer;
+    float: right;
+    padding: 10px 20px;
+    margin: 10px;
+    background: #337AB7;
+    color: #FFF;
+    font-size: 20px;
+}
+.menu{margin-left: 50px;}
+.menu > ul {
+    margin: 0 auto;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+.menu > ul:before,
+.menu > ul:after {
+    content: "";
+    display: table;
+}
+.menu > ul:after {
+    clear: both;
+}
+.menu > ul > li {
+    float: left;
+    background: #337AB7;
+    padding: 0;
+    margin: 0;
+    transition: .2s ease-in-out;
+}
+.menu > ul > li a,
+.menu-mobile {
+    text-decoration: none;
+    padding: 20px 30px;
+    display: block;
+    color: #FFF;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    transition: .2s ease-in-out;
+}
+.menu-mobile {
+    display: none;
+}
+.menu > ul > li:hover {
+    background: #BFE2FF;
+}
+.menu > ul > li:hover a {
+    color: #000;
+}
+.menu > ul > li > ul {
+    display: none;
+    width: 100%;
+    background: #BFE2FF;
+    padding: 20px;
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+.menu > ul > li > ul:before,
+.menu > ul > li > ul:after {
+    content: "";
+    display: table;
+}
+.menu > ul > li > ul:after {
+    clear: both;
+}
+.menu > ul > li > ul > li {
+    margin: 0;
+    padding-bottom: 0;
+    list-style: none;
+    width: 25%;
+    background: none;
+    float: left;
+}
+.menu > ul > li > ul > li a {
+    padding: 10px;
+    display: block;
+    border-bottom: 1px solid #337AB7;
+}
+.menu > ul > li > ul > li a:hover {
+    color: #337AB7;
+    border-bottom: 1px solid #000;
+}
+.menu > ul > li > ul > li > ul {
+    display: block;
+    padding: 0;
+    margin: 10px 0 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+.menu > ul > li > ul > li > ul:before,
+.menu > ul > li > ul > li > ul:after {
+    content: "";
+    display: table;
+}
+.menu > ul > li > ul > li > ul:after {
+    clear: both;
+}
+.menu > ul > li > ul > li > ul > li {
+    float: left;
+    width: 100%;
+    margin: 0;
+}
+.menu > ul > li > ul > li > ul > li a {
+    border: 0;
+    padding: 10px 12px;
+    font-size: 18px;
+}
+.menu > ul > li > ul > li > ul > li a:hover {
+    border: 0;
+}
+.menu > ul > li > ul.normal-sub {
+    width: 300px;
+    left: auto;
+    padding: 20px;
+}
+.menu > ul > li > ul.normal-sub > li {
+    width: 100%;
+}
+.menu > ul > li > ul.normal-sub > li a {
+    border: 0;
+    padding: 10px;
+}
+@media only screen and (max-width: 768px) {
+    .menu-container {
+        width: 100%;
+    }
+    .menu-mobile {
+        display: block;
+    }
+    .menu-dropdown-icon:before {
+        display: block;
+    }
+    .menu{margin-left: 0;}
+    .menu > ul {
+        display: none;
+    }
+    .menu > ul > li {
+        width: 100%;
+        float: none;
+        display: block;
+        background: #BFE2FF;
+        border-top: 2px solid #FFF;
+        border-bottom: 2px solid #FFF;
+    }
+    .menu > ul > li a {
+        padding: 20px;
+        width: 100%;
+        display: block;
+        color: #000;
+    }
+    .menu > ul > li > ul {
+        position: relative;
+    }
+    .menu > ul > li > ul.normal-sub {
+        width: 100%;
+
+    }
+    .menu > ul > li > ul > li {
+        float: none;
+        width: 100%;
+    }
+    .menu > ul > li > ul:not(.normal-sub) > li {
+        margin-top: 20px;
+    }
+    .menu > ul > li > ul > li:first-child {
+        margin: 0;
+    }
+    .menu > ul > li > ul > li > ul {
+        position: relative;
+    }
+    .menu > ul > li > ul > li > ul > li {
+        float: none;
+    }
+    .menu .show-on-mobile {
+        display: block;
+    }
+}

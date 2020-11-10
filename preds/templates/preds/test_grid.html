@@ -14,31 +14,17 @@
     <link href="{% static 'app/css/jquery-ui-1.10.3.min.css' %}" rel="stylesheet" type="text/css" />
 
     <!-- Собственные настройки -->
-    <link href="{% static 'preds/css/root_var.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'preds/css/root_css.css' %}" rel="stylesheet" type="text/css" />
+    <!-- <link href="{% static 'preds/css/root_var.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'preds/css/root_css.css' %}" rel="stylesheet" type="text/css" /> -->
 
-    <link rel="stylesheet" href="{% static 'app/css/root_css.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/root_css.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'app/css/mane_menu/all.min.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'app/css/mane_menu/mane_menu.css' %}" type="text/css"/>
+
 
 <style>
 
-    /* Форматирование списка */
-    /* .ul_info_1, .ul_info_2, .ul_info_3 {
-    padding:0;
-    list-style: none;
-    line-height: 1.3;
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 80%;
-    }
-
-    .ul_info_1 li:before, .ul_info_2 li:before {
-        padding-right:5px;
-        font-weight: bold;
-        color: #666;
-        content: "\2022";
-        transition-duration: 0.5s;
-    } */
-
-    /* .ul_info_2 li:before{content: "\2714";} */
     .spn_img {margin-right: 0.4em;}
 
 </style>
@@ -46,9 +32,21 @@
 </head>
 <body>
 
+    <div class="menu-container" style="margin: 0 auto;" >
+        <div class="menu">
+            <ul>
+                <li><a href="#link">Главная</a></li>
+                <li><a href="#link">Каталог</a> </li>
+                <li><a href="#link">Магазин</a></li>
+                <li><a href="#link">Контакты</a></li>
+                <li><a href="#link">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div>
         <div class="container-fluid px-0">
-            <div class="row mx-auto justify-content-around" >
+            <div class="row mx-auto justify-content-around" style="background-color: #cff5b8;" >
                 <div class="col-3 my-auto px-0">
                     <img class="d-block" style="width: 100%; max-width: 160px; min-width: 50px;"  src="{% static 'preds/img_edsm/eds_160.png' %}" alt="">
                 </div>
@@ -61,7 +59,7 @@
                 </div>
             </div>
 
-            <div class="mx-auto" style="width: 95%; height: 2px; background-color: green;" ></div>
+            <div class="mx-auto" style="height: 2px; background-color: green;" ></div>
 
             <div class="row mt-3 mx-auto justify-content-center">
                 <div class="col col-sm-5 px-0">
@@ -169,11 +167,113 @@
 
             </div>
 
-            <div class="row mt-3 mx-auto">
-                <div class="col ml-2 eds_title_info">
-                    ЕСТЬ ВСЕ, ЧТО ТЕБЕ НУЖНО
+            <div class="row mt-3 mx-auto ">
+                <div class="col eds_title_info">
+                    <h3 class="mb-1 ml-1 eds_title_info"> ЕСТЬ ВСЕ, ЧТО ТЕБЕ НУЖНО </h3>
                 </div>
+                <div class="w-100"></div>
+                <div class="row mx-auto justify-content-center">
+                    <div class="col col-md-5">
+                        <div class="eds_title_info">Multiprotein Complex</div>
+                        <div class="eds_ul_none">
+                            (Изолят соевого белка, концентрат молочного белка, концентрат сывороточного белка)
+                        </div>
+                    </div>
 
+                    <div class="col col-md-auto">
+                        <ul class="eds_ul_right">
+                            <li>Строительный материал для клеток организма</li>
+                            <li>Источник кальция</li>
+                        </ul>
+
+                    </div>
+                    <div class="w-100"></div>
+
+                    <div class="col col-md-5 mt-1">
+                        <div class="eds_title_info">Лецитин</div>
+                    </div>
+
+                    <div class="col col-md-auto">
+                        <ul class="eds_ul_right">
+                            <li>Отодвигает старение</li>
+                            <li>Улучшает память</li>
+                            <li>Избавляет от лишнего веса</li>
+                        </ul>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col col-md-5">
+                        <div class="eds_title_info">Палатиноза, мальтодекстрин</div>
+                        <div class="eds_ul_none">(патока)</div>
+                    </div>
+
+                    <div class="col col-md-auto">
+                        <ul class="eds_ul_right">
+                            <li>Заряжают энергией</li>
+                            <li>Дают чувство сытости надолго</li>
+                        </ul>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col col-md-5 mt-1">
+                        <div class="eds_title_info">Вололкна и пребиотики</div>
+                        <div class="eds_ul_none">(инулин, цитрусовые волокна, камедь целлюлозы и тары)</div>
+                    </div>
+
+                    <div class="col col-md-auto">
+                        <ul class="eds_ul_right">
+                            <li>Выводят вредные вещества</li>
+                            <li>Очищают кишечник</li>
+                        </ul>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col col-md-5 mt-1">
+                        <div class="eds_title_info">12 витаминов +</div>
+                        <div class="eds_title_info" style="margin-top: -5px;">11 минералов</div>
+                        <div class="eds_ul_none">
+                            (A, E, C, D3, B1, B2, B5, B6, B9, B12, PP, H, калий, кальций, фосфор, магний, цинк, железо, медь, марганец, йод, хром,кремний)
+                        </div>
+                    </div>
+
+                    <div class="col col-md-5">
+                        <ul class="eds_ul_right">
+                            <li>Укрепляют иммунитет</li>
+                            <li>Питают мозг и нервную систему</li>
+                        </ul>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col col-md-5 mt-1">
+                        <div class="eds_title_info">Энзимы</div>
+                        <div class="eds_ul_none">(бромелайн, папаин)</div>
+                    </div>
+
+                    <div class="col col-md-auto">
+                        <ul class="eds_ul_right">
+                            <li>Помогают усваивать белок</li>
+                            <li>Убирают жировые отложения</li>
+                        </ul>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col col-md-5 mt-1">
+                        <div class="eds_title_info">Экстракт грифони</div>
+                    </div>
+
+                    <div class="col col-md-auto">
+                        <ul class="eds_ul_right">
+                            <li>Контролирует аппетит</li>
+                            <li>Защищает от стреса и усталости</li>
+                        </ul>
+                    </div>
+
+                </div>
 
             </div>
 
@@ -189,6 +289,37 @@
     <link href="{% static 'app/css/jquery-ui-1.10.3.min.css' %}" rel="stylesheet" type="text/css" />
     <script src="{% static 'app/js/popper.min.js' %}"></script>
     <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+
+
+    <script type="text/javascript">
+        (function($) {	$(document).ready(function () {
+
+        "use strict";
+
+        $('.menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');
+        $('.menu > ul > li > ul:not(:has(ul))').addClass('normal-sub');
+        $(".menu > ul").before("<span class=\"menu-mobile\">Меню:</span>");
+        $(".menu > ul > li").hover(function(e) {
+            if ($(window).width() > 768) {
+                $(this).children("ul").stop(true, false).fadeToggle(150);
+                e.preventDefault();
+            }
+        });
+        $(".menu > ul > li").click(function() {
+            if ($(window).width() <= 768) {
+                $(this).children("ul").fadeToggle(150);
+            }
+        });
+        $(".menu-mobile").click(function(e) {
+            $(".menu > ul").toggleClass('show-on-mobile');
+            e.preventDefault();
+        });
+
+
+
+            });
+        })(jQuery);
+    </script>
 
 
 </body>
