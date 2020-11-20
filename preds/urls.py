@@ -1,7 +1,7 @@
 
 from django.urls import path
 
-from .views import index, greed
+from .views import index, greed, get_content_eds
 
 
 
@@ -10,6 +10,7 @@ from .views import index, greed
 urlpatterns = [
 
     path('greed/', greed, name='greed'),
+    path('contenteds', get_content_eds, name="contenteds" ),
     path('', index, name='preds'),
 
 ]
