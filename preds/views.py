@@ -24,6 +24,8 @@ def get_content_eds(request):
 
 def greed(request):
     """Тестирование структуры greed for mobile device"""
+
+    # return render(request, 'preds/temp/test_grid.html')
     return render(request, 'preds/test_grid.html')
     # return render(request, 'preds/test_li.html')
 

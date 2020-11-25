@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'advuser.apps.advuserConfig',
     'prtesting.apps.prtestingConfig',
     'preds.apps.PredsConfig',
+    'templ_func.apps.TemplFuncConfig',
 ]
 
 # Middleware framework
