@@ -50,7 +50,7 @@
         <h3>Контент для детального отображения информации</h3>
     </div>
 
-    <div class="container-fluid px-0">
+    <div class="container-fluid px-0" id='main_container' >
         <!-- <button class="btn-open-content">ОткрКонтент</button> -->
 
         <div class="row mx-auto">
@@ -68,60 +68,26 @@
 
         <div class="mx-auto" style="height: 2px; background-color: green;" ></div>
 
-        {% autoescape off %}{{'preds:tags/eds_tag01.html'|filter_tag_eds_01}}{% endautoescape %}
+        <div id="par-eds_tag01">
+            <!-- {% autoescape off %}{{'preds:tags/eds_tag01.html'|filter_tag_eds_01}}{% endautoescape %} -->
+        </div>
 
-        {% autoescape off %}{{'preds:tags/eds_tag02.html'|filter_tag_eds_01}}{% endautoescape %}
+        <div id="par-eds_tag02">
+            <!-- {% autoescape off %}{{'preds:tags/eds_tag02.html'|filter_tag_eds_01}}{% endautoescape %} -->
+        </div>
 
-
-        <div class="row mt-3 mx-auto justify-content-center">
-            <div class="col col-sm-6 pl-0 ml-0 w-100" >
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <h3 class="mb-1 eds_title_info">
-                            <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
-                            УДОБНО</h3>
-                            <div class="eds_title_info">возьми с собой и замени <br> завтрак, обед или ужин</div>
-                    </div>
-
-                    <!-- <div class="w-100"></div> -->
-
-                    <div class="col-12 col-md-6" style="position: relative;">
-                        <h3 class="mb-1 eds_title_info">
-                            <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
-                            ПОЛЕЗНО</h3>
-
-                        <div class="title_info" style="font-family: 'PT Sans Narrow Bold', sans-serif;"> В одной порции:</div>
-                        <div style="position: absolute; right: 5em; bottom: -0.5em; z-index: -1;">
-                            <img src="{% static 'preds/img_edsm/eds_110.png' %}" alt="">
-                        </div>
-                        <ul class="eds_ul_none">
-                            <li>белки 22г,жиры 5г,углеводы 15г</li>
-                            <li>12 витаминов + 11 минералов</li>
-                            <li>ферменты</li>
-                            <li>клетчатка</li>
-                            <li>менее 200 ккал</li>
-                            <li>нет синтетических ароматизаторов, красителей и консервантов</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="row col col-sm-5 px-0" >
-                <h3 class="eds_title_info">
-                    <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
-                    ВЫГОДНО </h3>
-                <div style="position: absolute; top: 45px;">
-                    <img style="width: 95%;" src="{% static 'preds/img_edsm/eds_111.png'%}" alt="">
-                </div>
-            </div>
+        <div id="par-eds_tag04">
 
         </div>
 
-        {% autoescape off %}{{'preds:tags/eds_tag03.html'|filter_tag_eds_01}}{% endautoescape %}
+        <div id="par-eds_tag03">
+            <h3>ЕСТЬ ВСЕ, ЧТО ТЕБЕ НУЖНО</h3>
+            <button id='btn_eds_tag03'>Подробно</button>
+            <div>
 
-
+            </div>
+        </div>
+        <!-- {% autoescape off %}{{'preds:tags/eds_tag03.html'|filter_tag_eds_01}}{% endautoescape %} -->
 
     </div>
 
@@ -198,44 +164,67 @@
 
                 });
 
-/*
-$.ajax({
-                    url: "{% url 'sendspecialmes' %}",
-                    data: data,
-                    type: 'get',
-                    dataType: 'json',
-                    success: function (data) {
-
-                        // Обработка выделения элемента меню
-                        if (data.navItem){
-                            $('.nav-item.active').removeClass('active');
-
-                            navItem = '#' + data.navItem;
-                            $(navItem).addClass('active');
-                            }
-
-                        if (data.res == 'empty') return;
-
-                        let val_dialog = $('#any_message_system')
-                        val_dialog.dialog({ title: data.title })
-                        val_dialog.html(data.mes)
-                        val_dialog.dialog('open')
-                    }
-                });
-*/
-
-
-                // contentDetail.empty();
-                // let ob = $('<h3>'+title+'</h3>');
-                // let contOb = $('<p>'+cont+'</p>')
-                // contentDetail.append(ob).append(contOb);
-                // contentDetail.toggle();
-
             });
 
+        }()); // end управление встроенным контентом
+
+        // Обработчики элементов, загружающие контент по ajax
+        (function(){
+            const fun_click = function(e){
+                const curID = $(e.currentTarget).prop('id');
+                // console.log('id: ' + curID);
+
+                const data = {
+                    file_tag: curID
+                }
+
+                $.ajax({
+                    url: "{% url 'contentedstag' %}",
+                    data: data,
+                    type: 'get',
+                    dataType: 'html',
+                    success: function(data){
+                        // console.log('Ответ сервера');
+
+                        let div = $('#par-eds_tag03 div');
+                        div.empty();
+                        div.html(data);
+                    }
+
+                });
+            }
+
+            function load_content(id){
+                const data = {
+                    file_tag: id
+                }
+
+                $.ajax({
+                    url: "{% url 'contentedstag' %}",
+                    data: data,
+                    type: 'get',
+                    dataType: 'html',
+                    success: function(data){
+                        // console.log('Ответ сервера');
+
+                        let div = $('#'+id);
+                        div.empty();
+                        div.html(data);
+                    }
+
+                });
+            }
+
+            // Загрузка контента
+            load_content('par-eds_tag01');
+            load_content('par-eds_tag02');
+            load_content('par-eds_tag04');
+
+            $('#main_container').on('click', 'button', fun_click )
 
 
-        }());
+        }()) // end Обработчики элементов, загружающие контент по ajax
+
 
             });
         })(jQuery);
