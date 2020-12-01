@@ -46,8 +46,11 @@
         </div>
     </div>
 
-    <div class="container-fluid" id="content-detail">
-        <h3>Контент для детального отображения информации</h3>
+    <div class="container" id="content-detail">
+    <!-- <button id='btn_content-detail'>Назад</button>
+    <div>
+    </div>
+-->
     </div>
 
     <div class="container-fluid px-0" id='main_container' >
@@ -91,7 +94,6 @@
 
     </div>
 
-
     <script src="{% static 'app/js/jquery_12.min.js' %}"></script>
 
 
@@ -105,8 +107,28 @@
 
         "use strict";
 
-        // Настройки меню
-        (function () {
+        const sContentDetail = '#content-detail';   // div детализации
+        const mainWrapper = $('#main_container');   // div основного интерфейса
+        let id_loadContent = '';    // Строковый идентифЗагруженной детализации
+
+        // ********************************************************************
+
+        // Глобальная процедура ОБНОВЛЕНИЯ интерфейса пользователя
+        // после загрузки детализации по ajax
+        function toggleHtml (order='mainDur', mainDur=800, detailDur=1200){
+            if (order === 'mainDur') {
+                mainWrapper.fadeOut(mainDur);
+                $(sContentDetail).fadeIn(detailDur)
+            }
+            else {
+                $(sContentDetail).fadeOut(detailDur)
+                mainWrapper.fadeIn(mainDur);
+            }
+
+            }
+
+        // начальная настройка интерфейса (включая меню)
+        (function (detail) {
 
             $('.menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');
             $('.menu > ul > li > ul:not(:has(ul))').addClass('normal-sub');
@@ -127,87 +149,61 @@
                 e.preventDefault();
             });
 
-        }());
+            // Начальная настройка div детализации
+            const divDetail = $(detail);
+            divDetail.hide();
+            let btn = $("<button id='btn_content-detail'>Назад</button>");
+            divDetail.append(btn).append($('<div />'))
 
-        // управление встроенным контентом
-        (function(){
+            // Обработчик скрытие детализации
+            $('#btn_content-detail').click(function(e){
+                toggleHtml('closeDet', 800, 1200);
+            })
 
-            let contentDetail = $('#content-detail').hide();
+        }(sContentDetail));
 
-            $('.btn-open-content').click(function(ev){
-                ev.preventDefault();
+        // Обработчики загрузки по ajax
+        (function(detail, main, loadContent){
 
-                let data = { id_pr: 'EDsmart' }
-
-                $.ajax({
-                    url: "{% url 'contenteds' %}",
-                    data: data,
-                    type: 'get',
-                    dataType: 'json',
-                    success: function(data){
-                        console.log(data);
-                        console.log(data.res);
-
-                        let title = 'empty';
-                        let cont = 'empty';
-
-                        title = data.title;
-                        cont = data.cont;
-
-                        contentDetail.empty();
-                        let ob = $('<h3>'+title+'</h3>');
-                        let contOb = $('<p>'+cont+'</p>')
-                        contentDetail.append(ob).append(contOb);
-                        contentDetail.toggle();
-
-                    }
-
-                });
-
-            });
-
-        }()); // end управление встроенным контентом
-
-        // Обработчики элементов, загружающие контент по ajax
-        (function(){
+            // Обработчик загрузки детализации в <div id="content-detail" ...
             const fun_click = function(e){
                 const curID = $(e.currentTarget).prop('id');
-                // console.log('id: ' + curID);
 
-                const data = {
-                    file_tag: curID
+                if (loadContent !== curID){
+                    $.ajax({
+                        url: "{% url 'contentedstag' %}",
+                        data: { file_tag: curID },
+                        type: 'get',
+                        dataType: 'html',
+
+                        success: function(data){
+                            const div = $(sContentDetail + ' div');
+                            div.empty();
+                            div.append(data);
+
+                            loadContent = curID;
+                            toggleHtml();
+                            // console.log('load', curID);
+                        }
+                    });
                 }
 
-                $.ajax({
-                    url: "{% url 'contentedstag' %}",
-                    data: data,
-                    type: 'get',
-                    dataType: 'html',
-                    success: function(data){
-                        // console.log('Ответ сервера');
+                toggleHtml()
 
-                        let div = $('#par-eds_tag03 div');
-                        div.empty();
-                        div.html(data);
-                    }
-
-                });
             }
 
+            // Обработчик загрузки основного контента
             function load_content(id){
-                const data = {
-                    file_tag: id
-                }
 
                 $.ajax({
                     url: "{% url 'contentedstag' %}",
-                    data: data,
+                    data: { file_tag: id },
                     type: 'get',
                     dataType: 'html',
                     success: function(data){
-                        // console.log('Ответ сервера');
 
                         let div = $('#'+id);
+
                         div.empty();
                         div.html(data);
                     }
@@ -220,11 +216,11 @@
             load_content('par-eds_tag02');
             load_content('par-eds_tag04');
 
-            $('#main_container').on('click', 'button', fun_click )
+            // бработчик для динимически загружаемых элементов
+            $(main).on('click', 'button', fun_click )
 
 
-        }()) // end Обработчики элементов, загружающие контент по ajax
-
+        }(sContentDetail, mainWrapper, id_loadContent)) // end Обработчики элементов, загружающие контент по ajax
 
             });
         })(jQuery);
