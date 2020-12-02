@@ -1,18 +1,9 @@
 @charset "UTF-8";
-/* Набор градаций */
-/* 1.2 */
-/* 1.44 */
-/* 1.728 */
-/* 2.074 */
-/* 2.488 */
-/* 2.986 */
-/* 3.583 */
-/* Базовые настройки */
 :root {
   box-sizing: border-box;
   font-size: calc(1vw + 0.6em); }
 
-@media (min-width: 1200px) {
+@media (min-width: 800px) {
   :root {
     font-size: 1.125em; } }
 *, *::before, *::after {
@@ -33,7 +24,6 @@ a:active {
   color: #b81414; }
 
 html {
-  font-size: 1em;
   line-height: 1.44; }
 
 h1 {
@@ -57,13 +47,7 @@ h3, h2 {
 h1 {
   line-height: 1; }
 
-@media (min-width: 576px) {
-  html {
-    font-size: 19.2px; } }
 @media (min-width: 768px) {
-  html {
-    font-size: 23.04px; }
-
   h3 {
     font-size: 1.728em; }
 
@@ -73,18 +57,12 @@ h1 {
   h1 {
     font-size: 2.48832em; } }
 @media (min-width: 992px) {
-  html {
-    font-size: 27.648px; }
-
   h2 {
     font-size: 2.48832em; }
 
   h1 {
     font-size: 2.985984em; } }
 @media (min-width: 1200px) {
-  html {
-    font-size: 33.1776px; }
-
   h1 {
     font-size: 3.5831808em; } }
 .u-h1Smaller {
@@ -132,7 +110,7 @@ h1 {
   font-family: 'Roboto Condensed Bold';
   src: url(Roboto_Condensed/RobotoCondensed-Bold.ttf);
   /*700 */ }
-/* Инофрмация в виде заголовка */
+/* Специальные заголовки в карочках */
 .eds_title_info {
   font-family: 'PT Sans Narrow Bold', sans-serif;
   margin-bottom: 0; }
