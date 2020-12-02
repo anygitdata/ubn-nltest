@@ -1,5 +1,5 @@
 {% load static %}
-{% load tags_eds%}
+{% load tags_eds %}
 
 
 <!DOCTYPE html>
@@ -46,205 +46,53 @@
         </div>
     </div>
 
-    <div class="container-fluid" id="content-detail">
-        <h3>Контент для детального отображения информации</h3>
+    <div class="container" id="content-detail">
+    <!-- <button id='btn_content-detail'>Назад</button>
+    <div>
+    </div>
+-->
     </div>
 
-    <div class="container-fluid px-0">
-        <button class="btn-open-content">ОткрКонтент</button>
+    <div class="container-fluid px-0" id='main_container' >
+        <!-- <button class="btn-open-content">ОткрКонтент</button> -->
 
+        <div class="row mx-auto">
+            <div class="col">
+                <img class="mx-auto d-block" style="display: inline-block; max-height: 120px;" src="{% static 'preds/img_edsm/edsmart.png' %}" alt="">
+            </div>
+            <div class="col">
+                <div class="pt-2" style="line-height: calc(var(--base) * var(--ms1)); color:green">
+                    <div style="font-size: 0.9em; font-weight:600">УМНАЯ ЕДА</div>
+                    <div style="font-size: 0.7em;">БАЛАНС ПИТАНИЯ</div>
+                    <div style="font-size: 0.6em;">БЕЗ ЛИШНИХ КАЛОРИЙ</div>
+                </div>
+            </div>
+        </div>
 
         <div class="mx-auto" style="height: 2px; background-color: green;" ></div>
 
-        <!-- {{'tags/eds_tag01.html' | print_tag_eds_01}} -->
-
-        <div class="row mt-3 mx-auto justify-content-center">
-            <div class="col col-sm-5 px-0" >
-                <h3 class="mb-1 eds_title_info">ТЫ ПОЛУЧАЕШЬ</h3>
-                <div>
-                    <ul class="eds_ul_none">
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_001.png'%}" alt=""></span>фигуры мечты</li>
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_002.png'%}" alt=""></span>удовельствие от вкуса</li>
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_003.png'%}" alt=""></span>отличное настроение</li>
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_004.png'%}" alt=""></span>сильный иммунитет</li>
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_005.png'%}" alt=""></span>полезные пищевые привычки</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col col-sm-5 px-0" >
-                <h3 class="mb-1 eds_title_info">ТЫ ИЗБАВЛЯЕШЬСЯ</h3>
-                <div>
-                    <ul class="eds_ul_none">
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_006.png'%}" alt=""></span>лишнего веса</li>
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_007.png'%}" alt=""></span>жировых отложений</li>
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_008.png'%}" alt=""></span>отеков</li>
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_009.png'%}" alt=""></span>вредной еды</li>
-                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_010.png'%}" alt=""></span>тяжести в желудке</li>
-                    </ul>
-                </div>
-            </div>
+        <div id="par-eds_tag01">
+            <!-- {% autoescape off %}{{'preds:tags/eds_tag01.html'|filter_tag_eds_01}}{% endautoescape %} -->
         </div>
 
-        <div class="row mt-3 mx-auto justify-content-center">
-            <div class="col col-sm-6 pl-0 ml-0 w-100" >
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <h3 class="mb-1 eds_title_info">
-                            <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
-                            УДОБНО</h3>
-                            <div class="eds_title_info">возьми с собой и замени <br> завтрак, обед или ужин</div>
-                    </div>
+        <div id="par-eds_tag02">
+            <!-- {% autoescape off %}{{'preds:tags/eds_tag02.html'|filter_tag_eds_01}}{% endautoescape %} -->
+        </div>
 
-                    <!-- <div class="w-100"></div> -->
-
-                    <div class="col-12 col-md-6" style="position: relative;">
-                        <h3 class="mb-1 eds_title_info">
-                            <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
-                            ПОЛЕЗНО</h3>
-
-                        <div class="title_info" style="font-family: 'PT Sans Narrow Bold', sans-serif;"> В одной порции:</div>
-                        <div style="position: absolute; right: 5em; bottom: -0.5em; z-index: -1;">
-                            <img src="{% static 'preds/img_edsm/eds_110.png' %}" alt="">
-                        </div>
-                        <ul class="eds_ul_none">
-                            <li>белки 22г,жиры 5г,углеводы 15г</li>
-                            <li>12 витаминов + 11 минералов</li>
-                            <li>ферменты</li>
-                            <li>клетчатка</li>
-                            <li>менее 200 ккал</li>
-                            <li>нет синтетических ароматизаторов, красителей и консервантов</li>
-                        </ul>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="row col col-sm-5 px-0" >
-                <h3 class="eds_title_info">
-                    <span><img src="{%static 'preds/img_edsm/check_22_001.png'%}" alt=""></span>
-                    ВЫГОДНО </h3>
-                <div style="position: absolute; top: 45px;">
-                    <img style="width: 95%;" src="{% static 'preds/img_edsm/eds_111.png'%}" alt="">
-                </div>
-            </div>
+        <div id="par-eds_tag04">
 
         </div>
 
-        <div class="row mt-3 mx-auto ">
-            <div class="col eds_title_info">
-                <h3 class="mb-1 ml-1 eds_title_info"> ЕСТЬ ВСЕ, ЧТО ТЕБЕ НУЖНО </h3>
-            </div>
-            <div class="w-100"></div>
-            <div class="row mx-auto justify-content-center">
-                <div class="col col-md-5">
-                    <div class="eds_title_info">Multiprotein Complex</div>
-                    <div class="eds_ul_none">
-                        (Изолят соевого белка, концентрат молочного белка, концентрат сывороточного белка)
-                    </div>
-                </div>
-
-                <div class="col col-md-auto">
-                    <ul class="eds_ul_right">
-                        <li>Строительный материал для клеток организма</li>
-                        <li>Источник кальция</li>
-                    </ul>
-
-                </div>
-                <div class="w-100"></div>
-
-                <div class="col col-md-5 mt-1">
-                    <div class="eds_title_info">Лецитин</div>
-                </div>
-
-                <div class="col col-md-auto">
-                    <ul class="eds_ul_right">
-                        <li>Отодвигает старение</li>
-                        <li>Улучшает память</li>
-                        <li>Избавляет от лишнего веса</li>
-                    </ul>
-                </div>
-
-                <div class="w-100"></div>
-
-                <div class="col col-md-5">
-                    <div class="eds_title_info">Палатиноза, мальтодекстрин</div>
-                    <div class="eds_ul_none">(патока)</div>
-                </div>
-
-                <div class="col col-md-auto">
-                    <ul class="eds_ul_right">
-                        <li>Заряжают энергией</li>
-                        <li>Дают чувство сытости надолго</li>
-                    </ul>
-                </div>
-
-                <div class="w-100"></div>
-
-                <div class="col col-md-5 mt-1">
-                    <div class="eds_title_info">Вололкна и пребиотики</div>
-                    <div class="eds_ul_none">(инулин, цитрусовые волокна, камедь целлюлозы и тары)</div>
-                </div>
-
-                <div class="col col-md-auto">
-                    <ul class="eds_ul_right">
-                        <li>Выводят вредные вещества</li>
-                        <li>Очищают кишечник</li>
-                    </ul>
-                </div>
-
-                <div class="w-100"></div>
-
-                <div class="col col-md-5 mt-1">
-                    <div class="eds_title_info">12 витаминов +</div>
-                    <div class="eds_title_info" style="margin-top: -5px;">11 минералов</div>
-                    <div class="eds_ul_none">
-                        (A, E, C, D3, B1, B2, B5, B6, B9, B12, PP, H, калий, кальций, фосфор, магний, цинк, железо, медь, марганец, йод, хром,кремний)
-                    </div>
-                </div>
-
-                <div class="col col-md-5">
-                    <ul class="eds_ul_right">
-                        <li>Укрепляют иммунитет</li>
-                        <li>Питают мозг и нервную систему</li>
-                    </ul>
-                </div>
-
-                <div class="w-100"></div>
-
-                <div class="col col-md-5 mt-1">
-                    <div class="eds_title_info">Энзимы</div>
-                    <div class="eds_ul_none">(бромелайн, папаин)</div>
-                </div>
-
-                <div class="col col-md-auto">
-                    <ul class="eds_ul_right">
-                        <li>Помогают усваивать белок</li>
-                        <li>Убирают жировые отложения</li>
-                    </ul>
-                </div>
-
-                <div class="w-100"></div>
-
-                <div class="col col-md-5 mt-1">
-                    <div class="eds_title_info">Экстракт грифони</div>
-                </div>
-
-                <div class="col col-md-auto">
-                    <ul class="eds_ul_right">
-                        <li>Контролирует аппетит</li>
-                        <li>Защищает от стреса и усталости</li>
-                    </ul>
-                </div>
+        <div id="par-eds_tag03">
+            <h3>ЕСТЬ ВСЕ, ЧТО ТЕБЕ НУЖНО</h3>
+            <button id='btn_eds_tag03'>Подробно</button>
+            <div>
 
             </div>
-
         </div>
-
+        <!-- {% autoescape off %}{{'preds:tags/eds_tag03.html'|filter_tag_eds_01}}{% endautoescape %} -->
 
     </div>
-
 
     <script src="{% static 'app/js/jquery_12.min.js' %}"></script>
 
@@ -259,8 +107,28 @@
 
         "use strict";
 
-        // Настройки меню
-        (function () {
+        const sContentDetail = '#content-detail';   // div детализации
+        const mainWrapper = $('#main_container');   // div основного интерфейса
+        let id_loadContent = '';    // Строковый идентифЗагруженной детализации
+
+        // ********************************************************************
+
+        // Глобальная процедура ОБНОВЛЕНИЯ интерфейса пользователя
+        // после загрузки детализации по ajax
+        function toggleHtml (order='mainDur', mainDur=800, detailDur=1200){
+            if (order === 'mainDur') {
+                mainWrapper.fadeOut(mainDur);
+                $(sContentDetail).fadeIn(detailDur)
+            }
+            else {
+                $(sContentDetail).fadeOut(detailDur)
+                mainWrapper.fadeIn(mainDur);
+            }
+
+            }
+
+        // начальная настройка интерфейса (включая меню)
+        (function (detail) {
 
             $('.menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');
             $('.menu > ul > li > ul:not(:has(ul))').addClass('normal-sub');
@@ -281,81 +149,78 @@
                 e.preventDefault();
             });
 
-        }());
+            // Начальная настройка div детализации
+            const divDetail = $(detail);
+            divDetail.hide();
+            let btn = $("<button id='btn_content-detail'>Назад</button>");
+            divDetail.append(btn).append($('<div />'))
 
-        // управление встроенным контентом
-        (function(){
+            // Обработчик скрытие детализации
+            $('#btn_content-detail').click(function(e){
+                toggleHtml('closeDet', 800, 1200);
+            })
 
-            let contentDetail = $('#content-detail').hide();
+        }(sContentDetail));
 
-            $('.btn-open-content').click(function(ev){
-                ev.preventDefault();
+        // Обработчики загрузки по ajax
+        (function(detail, main, loadContent){
 
-                let data = { id_pr: 'EDsmart' }
+            // Обработчик загрузки детализации в <div id="content-detail" ...
+            const fun_click = function(e){
+                const curID = $(e.currentTarget).prop('id');
+
+                if (loadContent !== curID){
+                    $.ajax({
+                        url: "{% url 'contentedstag' %}",
+                        data: { file_tag: curID },
+                        type: 'get',
+                        dataType: 'html',
+
+                        success: function(data){
+                            const div = $(sContentDetail + ' div');
+                            div.empty();
+                            div.append(data);
+
+                            loadContent = curID;
+                            toggleHtml();
+                            // console.log('load', curID);
+                        }
+                    });
+                }
+
+                toggleHtml()
+
+            }
+
+            // Обработчик загрузки основного контента
+            function load_content(id){
 
                 $.ajax({
-                    url: "{% url 'contenteds' %}",
-                    data: data,
+                    url: "{% url 'contentedstag' %}",
+                    data: { file_tag: id },
                     type: 'get',
-                    dataType: 'json',
+                    dataType: 'html',
                     success: function(data){
-                        console.log(data);
-                        console.log(data.res);
 
-                        let title = 'empty';
-                        let cont = 'empty';
+                        let div = $('#'+id);
 
-                        title = data.title;
-                        cont = data.cont;
-
-                        contentDetail.empty();
-                        let ob = $('<h3>'+title+'</h3>');
-                        let contOb = $('<p>'+cont+'</p>')
-                        contentDetail.append(ob).append(contOb);
-                        contentDetail.toggle();
-
+                        div.empty();
+                        div.html(data);
                     }
 
                 });
+            }
 
-/*
-$.ajax({
-                    url: "{% url 'sendspecialmes' %}",
-                    data: data,
-                    type: 'get',
-                    dataType: 'json',
-                    success: function (data) {
+            // Загрузка контента
+            load_content('par-eds_tag01');
+            load_content('par-eds_tag02');
+            load_content('par-eds_tag04');
 
-                        // Обработка выделения элемента меню
-                        if (data.navItem){
-                            $('.nav-item.active').removeClass('active');
-
-                            navItem = '#' + data.navItem;
-                            $(navItem).addClass('active');
-                            }
-
-                        if (data.res == 'empty') return;
-
-                        let val_dialog = $('#any_message_system')
-                        val_dialog.dialog({ title: data.title })
-                        val_dialog.html(data.mes)
-                        val_dialog.dialog('open')
-                    }
-                });
-*/
+            // бработчик для динимически загружаемых элементов
+            $(main).on('click', 'button', fun_click )
 
 
-                // contentDetail.empty();
-                // let ob = $('<h3>'+title+'</h3>');
-                // let contOb = $('<p>'+cont+'</p>')
-                // contentDetail.append(ob).append(contOb);
-                // contentDetail.toggle();
-
-            });
-
-
-
-        }());
+        }(sContentDetail, mainWrapper, id_loadContent)) // end Обработчики элементов, загружающие контент по ajax
 
             });
         })(jQuery);

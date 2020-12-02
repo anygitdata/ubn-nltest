@@ -4,6 +4,20 @@ from django.core.cache import cache
 from django.http import JsonResponse
 
 
+
+def get_content_eds_html(request):
+    """Загрузка контента html """
+    # from django.shortcuts import render_to_response
+
+    sID = request.GET.get('file_tag')
+    sID = sID[4:]
+    sFile = '{}/{}.html'.format('preds/tags', sID)
+
+    # return render_to_response(sFile)
+    return render(request, sFile)
+
+
+
 def get_content_eds(request):
     """Ajax  обработчик <script> ...</script> from  base_layout.html.
     Обработка специальных сообщений через модальноеОкно в браузере
@@ -16,14 +30,21 @@ def get_content_eds(request):
     url:  contenteds
     name: contenteds
     """
-    1
-    dc = dict(title="ED smart", cont="Контент продукции ED", res="ok")
+    if request.method == 'GET':
 
-    return JsonResponse(dc, json_dumps_params=dict(ensure_ascii=False))
+        data = request.GET.get('file_tag')
+
+        dc = dict(title="ED smart", cont=data, res="ok")
+
+        return JsonResponse(dc, json_dumps_params=dict(ensure_ascii=False))
+
+    return JsonResponse({'cont': 'Error url', 'res':'error'})
 
 
 def greed(request):
     """Тестирование структуры greed for mobile device"""
+
+    # return render(request, 'preds/temp/test_grid.html')
     return render(request, 'preds/test_grid.html')
     # return render(request, 'preds/test_li.html')
 
