@@ -53,10 +53,12 @@ h1 {line-height: $base  * $ms0;}
 
 // медиа запросы
 @media (min-width: 576px){
+    // font-size: 19.2px;
     html{ @include mx_font_sizePX($ms1);}
 }
 
 @media (min-width: 768px){
+    // font-size: 23.04px;
     html{ @include mx_font_sizePX($ms2);}
 
     h3 { @include mx_font_sizeEM($ms3);}
@@ -65,6 +67,7 @@ h1 {line-height: $base  * $ms0;}
 }
 
 @media (min-width: 992px){
+    // font-size: 19.2px;
     html{ @include mx_font_sizePX($ms3);}
 
     h2 { @include mx_font_sizeEM($ms5);}
@@ -72,6 +75,7 @@ h1 {line-height: $base  * $ms0;}
 }
 
 @media (min-width: 1200px){
+    // font-size: 33.1776px;
     html{ @include mx_font_sizePX($ms4);}
     h1 { @include mx_font_sizeEM($ms7);}
 }
