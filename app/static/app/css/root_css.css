@@ -1,4 +1,12 @@
 @charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
+html,
+body {
+  height: 100%; }
+
 :root {
   box-sizing: border-box;
   font-size: calc(1vw + 0.6em); }
@@ -110,6 +118,71 @@ h1 {
   font-family: 'Roboto Condensed Bold';
   src: url(Roboto_Condensed/RobotoCondensed-Bold.ttf);
   /*700 */ }
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: 1400px;
+  min-width: 320px; }
+
+.main-content {
+  margin-top: 9rem;
+  flex: 1 0 auto; }
+
+#content-detail {
+  margin-top: 9rem; }
+
+.main-bar {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #b7f6f0; }
+
+.main-bar__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.main-bar__col {
+  flex: 1; }
+
+.main-bar__img {
+  display: inline-block;
+  max-width: 100px;
+  margin: 0 auto 0 10px; }
+
+@media (min-width: 480px) {
+  .main-bar__img {
+    max-width: 120px; } }
+@media (min-width: 600px) {
+  .main-bar__img {
+    max-width: 150px; } }
+.main-bar__title {
+  max-width: 100px;
+  margin: 0 10px 0 auto; }
+
+@media (min-width: 480px) {
+  .main-bar__title {
+    max-width: 120px; } }
+@media (min-width: 600px) {
+  .main-bar__title {
+    max-width: 150px; } }
+.dividing-line {
+  height: 2px;
+  background-color: green; }
+
+.footer {
+  width: 100%;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  background-color: slategray; }
+
+.footer__proj, .footer__header, .footer__cons {
+  flex: 1; }
+
 /* Специальные заголовки в карочках */
 .eds_title_info {
   font-family: 'PT Sans Narrow Bold', sans-serif;
@@ -131,5 +204,45 @@ h1 {
 
 .eds_ul_right li::before {
   content: "\2714"; }
+
+.par-eds_tag {
+  display: flex;
+  justify-content: center;
+  padding: 0 1em; }
+
+@media (min-width: 560px) {
+  .par-eds_tag {
+    padding: 0 3em; } }
+.par-eds_tag > div {
+  flex: 1; }
+
+.par-eds_tag__row {
+  display: flex;
+  flex-direction: column; }
+
+.par-eds_tag_info {
+  font-family: 'PT Sans Narrow Bold', sans-serif; }
+
+.eds_tag__col_z {
+  position: relative; }
+
+.par-eds_tag_info__img {
+  position: absolute;
+  margin-top: -4em;
+  left: 15em;
+  bottom: 7em;
+  z-index: -2; }
+
+.par-eds_tag_info__img img {
+  display: block;
+  width: 10em; }
+
+.par-eds_tag__row2 {
+  display: flex;
+  flex-direction: column; }
+
+.par-eds_tag__row2 div img {
+  display: block;
+  width: 12em; }
 
 /*# sourceMappingURL=root_css.css.map */

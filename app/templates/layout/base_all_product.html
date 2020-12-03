@@ -1,5 +1,5 @@
 {% load static %}
-{% load tags_eds %}
+{% load ext_data_user %}
 
 
 <!DOCTYPE html>
@@ -16,21 +16,11 @@
     <!-- <link rel="stylesheet" href="{% static 'app/css/fontAwesome/css/font-awesome.min.css' %}"> -->
     <link href="{% static 'app/css/jquery-ui-1.10.3.min.css' %}" rel="stylesheet" type="text/css" />
 
-    <!-- Собственные настройки -->
-    <!-- <link href="{% static 'preds/css/root_var.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'preds/css/root_css.css' %}" rel="stylesheet" type="text/css" /> -->
-
     <link rel="stylesheet" href="{% static 'app/css/root_css.css' %}" type="text/css">
 
     <link rel="stylesheet" href="{% static 'app/css/mane_menu/all.min.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'app/css/mane_menu/mane_menu.css' %}" type="text/css" />
 
-
-    <style>
-        .spn_img {
-            margin-right: 0.4em;
-        }
-    </style>
 
 </head>
 
@@ -38,35 +28,14 @@
 
     <div class="wrapper">
 
-        <div class="menu-container" style="margin: 0 auto;">
-            <div class="menu">
-                <ul>
-                    <li><a href="#link">Главная</a></li>
-                    <li><a href="#link">Каталог</a> </li>
-                    <li><a href="#link">Магазин</a></li>
-                    <li><a href="#link">Контакты</a></li>
-                    <li><a href="#link">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="container" id="content-detail">
-            <!-- <button id='btn_content-detail'>Назад</button>
-    <div>
-    </div>
--->
-        </div>
-
-        <div class="container-fluid px-0" id='main_container'>
-            <!-- <button class="btn-open-content">ОткрКонтент</button> -->
-
-            <div class="row mx-auto">
-                <div class="col">
-                    <img class="mx-auto d-block" style="display: inline-block; max-height: 120px;"
-                        src="{% static 'preds/img_edsm/edsmart.png' %}" alt="">
+        <div class="main-bar">
+            <div class="main-bar__row">
+                <div class="main-bar__col">
+                    <img class="main-bar__img" src="{% static 'preds/img_edsm/edsmart.png' %}" alt="" />
                 </div>
-                <div class="col">
-                    <div class="pt-2" style="line-height: calc(var(--base) * var(--ms1)); color:green">
+
+                <div class="main-bar__col" style="color:green">
+                    <div class="main-bar__title">
                         <div style="font-size: 0.9em; font-weight:600">УМНАЯ ЕДА</div>
                         <div style="font-size: 0.7em;">БАЛАНС ПИТАНИЯ</div>
                         <div style="font-size: 0.6em;">БЕЗ ЛИШНИХ КАЛОРИЙ</div>
@@ -74,33 +43,46 @@
                 </div>
             </div>
 
-            <div class="mx-auto" style="height: 2px; background-color: green;"></div>
-
-            <div id="par-eds_tag01">
-                <!-- {% autoescape off %}{{'preds:tags/eds_tag01.html'|filter_tag_eds_01}}{% endautoescape %} -->
-            </div>
-
-            <div id="par-eds_tag02">
-                <!-- {% autoescape off %}{{'preds:tags/eds_tag02.html'|filter_tag_eds_01}}{% endautoescape %} -->
-            </div>
-
-            <div id="par-eds_tag04">
-
-            </div>
-
-            <div id="par-eds_tag03">
-                <h3>ЕСТЬ ВСЕ, ЧТО ТЕБЕ НУЖНО</h3>
-                <button id='btn_eds_tag03'>Подробно</button>
-                <div>
-
+            <div class="menu-container" style="margin: 0 auto;">
+                <div class="menu">
+                    <ul>
+                        <li><a href="#link">Главная</a></li>
+                        <li><a href="#link">Каталог</a> </li>
+                        <li><a href="#link">Магазин</a></li>
+                        <li><a href="#link">Контакты</a></li>
+                        <li><a href="#link">FAQ</a></li>
+                    </ul>
                 </div>
             </div>
-            <!-- {% autoescape off %}{{'preds:tags/eds_tag03.html'|filter_tag_eds_01}}{% endautoescape %} -->
+
+            <div class="dividing-line"></div>
+        </div>
+
+        <div id="content-detail">
 
         </div>
 
-        <div class="footer">
 
+        <div class="main-content" style="border: 1px solid sienna; ">
+            {% block main %}
+
+            {% endblock %}
+        </div>
+
+
+        <div class="footer">
+            <div class="footer__proj">
+                <div>&reg;Проект 2020 г</div>
+                <div>Найти себя</div>
+            </div>
+
+            <div class="footer__header">
+                {% header_data %}
+            </div>
+
+            <div class="footer__cons">
+                {% cons_data user %}
+            </div>
         </div>
 
     </div>
@@ -108,20 +90,19 @@
 
     <script src="{% static 'app/js/jquery_12.min.js' %}"></script>
 
-
     <link href="{% static 'app/css/jquery-ui-1.10.3.min.css' %}" rel="stylesheet" type="text/css" />
     <script src="{% static 'app/js/popper.min.js' %}"></script>
     <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
 
 
-    <script type="text/javascript">
+    <script>
         (function ($) {
             $(document).ready(function () {
 
                 "use strict";
 
                 const sContentDetail = '#content-detail';   // div детализации
-                const mainWrapper = $('#main_container');   // div основного интерфейса
+                const mainWrapper = $('.main-content');   // div основного интерфейса
                 let id_loadContent = '';    // Строковый идентифЗагруженной детализации
 
                 // ********************************************************************
@@ -138,6 +119,7 @@
                         mainWrapper.fadeIn(mainDur);
                     }
 
+                    $("html,body").scrollTop($(sContentDetail)).offset().top;
                 }
 
                 // начальная настройка интерфейса (включая меню)
@@ -182,21 +164,22 @@
                     const fun_click = function (e) {
                         const curID = $(e.currentTarget).prop('id');
 
+                        let div;
                         if (loadContent !== curID) {
                             $.ajax({
-                                url: "{% url 'contentedstag' %}",
+                                url: "/preds/contentedstag", //  "{% url 'contentedstag' %}",
                                 data: { file_tag: curID },
                                 type: 'get',
                                 dataType: 'html',
 
                                 success: function (data) {
-                                    const div = $(sContentDetail + ' div');
+
+                                    div = $(sContentDetail + ' div');
                                     div.empty();
                                     div.append(data);
 
                                     loadContent = curID;
                                     toggleHtml();
-                                    // console.log('load', curID);
                                 }
                             });
                         }
@@ -224,14 +207,8 @@
                         });
                     }
 
-                    // Загрузка контента
-                    load_content('par-eds_tag01');
-                    load_content('par-eds_tag02');
-                    load_content('par-eds_tag04');
-
                     // бработчик для динимически загружаемых элементов
                     $(main).on('click', 'button', fun_click)
-
 
                 }(sContentDetail, mainWrapper, id_loadContent)) // end Обработчики элементов, загружающие контент по ajax
 

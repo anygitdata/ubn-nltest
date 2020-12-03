@@ -1,2 +1,6 @@
 # исключить из git ВСЕ файлы *.scss
 /temp_sass
+
+/temp_html
+
+/temp_any_data
