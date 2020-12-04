@@ -46,6 +46,7 @@ def greed(request):
 
     # return render(request, 'preds/test_grid.html')
     return render(request, 'preds/preds.html')
+
     # return render(request, 'preds/test_li.html')
 
 
