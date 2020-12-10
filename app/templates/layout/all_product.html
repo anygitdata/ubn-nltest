@@ -58,110 +58,17 @@
     </header>
 
     <div class="templ" style="height: 8.2em;">
-        <!-- Пустой div для опускания main  -->
+        {% comment %}Пустой div для опускания main  {% endcomment %}
     </div>
 
-    <main class="container main">
-        <div class="row">
-            <div class="order-1 order-lg-0 col-lg-3" style="background-color:khaki;">
-                    <p class="eds_title_info"> <span style="font-size: 120%;">ЕСТЬ ВСЕ,</span> что тебе нужно
-                    <button class="ml-2 px-3 mt-3" style="border: none; background-color: sandybrown; " >В самом деле?</button>
-                </p>
-            </div>
-
-            <!-- Главная колонка -->
-            <div class="col">
-                <h1 class="text-center eds_title_info mb-3" style="color:salmon;">Enegry diet Smart</h1>
-
-
-                <div class="flex-column">
-
-                    <!-- что это ... -->
-                    <div class="col">
-                        <div class="container px-0 px-md-4 px-lg-2">
-                            <div class="row">
-                                <div class="col">
-                                    <h3 class="eds_title_info">ЧТО ЭТО?</h3>
-                                    <ul class="eds_ul_left">
-                                        <li>полноценное питание</li>
-                                        <li>"ластик" для лишнего веса</li>
-                                        <li>еда для занятых</li>
-                                        <li>когда лень готовить</li>
-                                        <li>перекус на бегу</li>
-                                        <li>еда, которую удобно взять с собой</li>
-                                        <li>любимый вкус</li>
-                                    </ul>
-                                </div>
-
-                                <div class="col">
-                                    <h3 class="eds_title_info">ДЛЯ КОГО?</h3>
-                                    <ul class="eds_ul_right">
-                                        <li>для активных</li>
-                                        <li>для модных и современных</li>
-                                        <li>кто хочет похудеть</li>
-                                        <li>кто хочет быть здоровым</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ТЫ ПОЛУЧАЕШЬ -->
-                    <div class="col">
-                        <div class="container px-0 px-md-4 px-lg-2">
-                            <div class="row">
-                                <div class="col">
-                                    <h3 class="eds_title_info">ТЫ ПОЛУЧАЕШЬ</h3>
-                                    <ul class="eds_ul_none">
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_001.png'%}"
-                                                    alt=""></span>фигуры мечты</li>
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_002.png'%}"
-                                                    alt=""></span>удовельствие от вкуса</li>
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_003.png'%}"
-                                                    alt=""></span>отличное настроение</li>
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_004.png'%}"
-                                                    alt=""></span>сильный иммунитет</li>
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_005.png'%}"
-                                                    alt=""></span>полезные пищевые привычки</li>
-                                    </ul>
-                                </div>
-
-                                <div class="col">
-                                    <h3 class="eds_title_info">ТЫ ИЗБАВЛЯЕШЬСЯ</h3>
-                                    <ul class="eds_ul_none">
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_006.png'%}"
-                                                    alt=""></span>лишнего веса</li>
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_007.png'%}"
-                                                    alt=""></span>жировых отложений</li>
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_008.png'%}"
-                                                    alt=""></span>отеков</li>
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_009.png'%}"
-                                                    alt=""></span>вредной еды</li>
-                                        <li><span class="spn_img"><img src="{%static 'preds/img_edsm/eds_22_010.png'%}"
-                                                    alt=""></span>тяжести в желудке</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="order-2 col-lg-3 overflow-auto" style="background-color:khaki;">
-                <p class="eds_title_info"> <span style="font-size: 120%;"> Возьми с собой </span>
-                    <span class="ml-2"> и замени завтрак, </span> <span class="ml-2">  обед или ужин </span>
-                <button class="ml-2 px-3 mt-3" style="border: none; background-color: sandybrown; " >Это как?</button>
-            </p>
-            </div>
+    <main class="container main-content">
+        {% block main %}
+        {% endblock main %}
     </main>
 
 
-    <div style="height:6.5em"></div>
 
+    <div style="height:6.5em"></div>
     <div class="footer fixed-bottom">
         <div class="footer__proj">
             <div>&reg;Проект 2020 г</div>
@@ -177,16 +84,16 @@
         </div>
     </div>
 
-
     <script src="{% static 'app/js/jquery_12.min.js' %}"></script>
 
     <link href="{% static 'app/css/jquery-ui-1.10.3.min.css' %}" rel="stylesheet" type="text/css" />
     <script src="{% static 'app/js/popper.min.js' %}"></script>
     <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
 
-    <script src="{% static 'preds/js/prall_init_elements.js' %}"></script>
+    {% block scripts %}
+
+    {% endblock scripts %}
 
 
 </body>
-
 </html>

@@ -3,25 +3,25 @@
 
         "use strict";
 
-        const sContentDetail = '#content-detail';   // div детализации
-        const mainWrapper = $('.main-content');   // div основного интерфейса
+        const sContentDetail = $('#content-detail'); // div детализации
+        const mainContent = $('.main-content');   // испТолько для init обработчиков button
+        const mainCol = $('.main-col');           // div центральной колонки
         let id_loadContent = '';    // Строковый идентифЗагруженной детализации
 
         // ********************************************************************
 
         // Глобальная процедура ОБНОВЛЕНИЯ интерфейса пользователя
         // после загрузки детализации по ajax
-        function toggleHtml(order = 'mainDur', mainDur = 800, detailDur = 1200) {
+        function toggleHtml(order = 'mainDur', mainDur = 1200, detailDur = 800) {
             if (order === 'mainDur') {
-                mainWrapper.fadeOut(mainDur);
-                $(sContentDetail).fadeIn(detailDur)
+                mainCol.fadeOut(mainDur);
+                sContentDetail.fadeIn(detailDur)
+                // console.log('Детализация')
             }
             else {
-                $(sContentDetail).fadeOut(detailDur)
-                mainWrapper.fadeIn(mainDur);
+                sContentDetail.fadeOut(detailDur)
+                mainCol.fadeIn(mainDur);
             }
-
-            $("html,body").scrollTop($(sContentDetail)).offset().top;
         }
 
         // начальная настройка интерфейса (включая меню)
@@ -47,23 +47,27 @@
             });
 
             // Начальная настройка div детализации
-            const divDetail = $(detail);
-            divDetail.hide();
+            // const divDetail = detail;
+            detail.hide();
             let btn = $("<button id='btn_content-detail'>Назад</button>");
-            divDetail.append(btn).append($('<div />'))
+            detail.append(btn).append($('<div />'))
 
             // Обработчик скрытие детализации
             $('#btn_content-detail').click(function (e) {
+                e.preventDefault();
                 toggleHtml('closeDet', 800, 1200);
             })
 
         }(sContentDetail));
 
         // Обработчики загрузки по ajax
-        (function (detail, main, loadContent) {
+        (function (main, loadContent) {
 
             // Обработчик загрузки детализации в <div id="content-detail" ...
             const fun_click = function (e) {
+
+                e.preventDefault();
+
                 const curID = $(e.currentTarget).prop('id');
 
                 let div;
@@ -75,8 +79,7 @@
                         dataType: 'html',
 
                         success: function (data) {
-
-                            div = $(sContentDetail + ' div');
+                            div = $('#content-detail div');
                             div.empty();
                             div.append(data);
 
@@ -85,34 +88,16 @@
                         }
                     });
                 }
-
-                toggleHtml()
+                else
+                    toggleHtml()
 
             }
 
-            // Обработчик загрузки основного контента
-            function load_content(id) {
-
-                $.ajax({
-                    url: "{% url 'contentedstag' %}",
-                    data: { file_tag: id },
-                    type: 'get',
-                    dataType: 'html',
-                    success: function (data) {
-
-                        let div = $('#' + id);
-
-                        div.empty();
-                        div.html(data);
-                    }
-
-                });
-            }
 
             // бработчик для динимически загружаемых элементов
-            $(main).on('click', 'button', fun_click)
+            $(main).on('click', '.btn-detail-cont', fun_click)
 
-        }(sContentDetail, mainWrapper, id_loadContent)) // end Обработчики элементов, загружающие контент по ajax
+        }(mainContent, id_loadContent)) // end Обработчики элементов, загружающие контент по ajax
 
     });
 })(jQuery);

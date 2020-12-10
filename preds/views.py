@@ -10,8 +10,8 @@ def get_content_eds_html(request):
     # from django.shortcuts import render_to_response
 
     sID = request.GET.get('file_tag')
-    sID = sID[4:]
-    sFile = '{}/{}.html'.format('preds/tags', sID)
+    sID = sID[11:]  # btn-detail_eds_detail01
+    sFile = '{}/{}.html'.format('preds/cont_tags', sID)
 
     # return render_to_response(sFile)
     return render(request, sFile)

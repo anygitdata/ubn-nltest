@@ -1,9 +1,65 @@
 {% extends 'layout/all_product.html' %}
-{% load ext_data_user %}
 {% load static %}
-
+{% load tags_eds %}
 
 {% block main %}
 
+    <div class="row">
+
+        {# Блок левой колонки #}
+        <div class="order-1 order-lg-0 col-lg-3" style="background-color:khaki;">
+            <p class="eds_title_info"> <span style="font-size: 120%;">ЕСТЬ ВСЕ,</span> что тебе нужно
+                <button class="ml-2 px-3 mt-3 btn-detail-cont"
+                        id="btn-detail_eds_detail01"
+                        style="border: none; background-color: sandybrown; " >
+                    В самом деле?
+                </button>
+            </p>
+        </div>
+
+        {# Центральная колонка #}
+        <div class="col">
+            <div class="templ" id="content-detail">
+                <!-- Пустой div для опускания main  -->
+            </div>
+
+            <div class="main-col">
+
+                <h1 class="text-center eds_title_info mb-3" style="color:salmon;">Enegry diet Smart</h1>
+
+                <div class="flex-column">
+
+                    {#что это для кого #}
+                    {% tag_eds01  %}
+
+                    {# ТЫ ПОЛУЧАЕШЬ ТЫ ИЗБАВЛЯЕШЬСЯ #}
+                    {% tag_eds02  %}
+
+                </div>
+
+            </div>
+        </div>
+
+        {# Блок правой колонки #}
+        <div class="order-2 col-lg-3 overflow-auto" style="background-color:khaki;">
+            <p class="eds_title_info"> <span style="font-size: 120%;"> Возьми с собой </span>
+                <span class="ml-2"> и замени завтрак, </span> <span class="ml-2">  обед или ужин </span>
+                <button class="ml-2 px-3 mt-3 btn-detail-cont" id="btn-detail_eds_detail02"
+                        style="border: none; background-color: sandybrown; " >
+                    Это как?
+                </button>
+            </p>
+        </div>
+
+
+    </div>
 
 {% endblock main %}
+
+{% comment %}
+    Блок script настройки меню
+    функционал пользовательского интерфейса
+{% endcomment %}
+{% block scripts %}
+        <script src="{% static 'preds/js/prall_init_elements.js' %}"></script>
+{% endblock scripts %}

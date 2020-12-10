@@ -3,6 +3,22 @@ from django import template
 
 register = template.Library()
 
+
+@register.inclusion_tag('tags/eds_tag01.html')
+def tag_eds01():
+    """Рендеринг тэга tag01.htm."""
+
+    return None
+
+
+@register.inclusion_tag('tags/eds_tag02.html')
+def tag_eds02():
+    """Рендеринг тэга tag01.htm."""
+
+    return None
+
+
+
 @register.simple_tag
 def print_tag_eds_01(file):
     import codecs
