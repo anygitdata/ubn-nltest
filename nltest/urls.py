@@ -23,7 +23,7 @@ from django.urls import path, include
 from app.views import Send_special_message, Empty_ext
 from prtesting.views import PrTest
 from advuser.views import Profile
-from preds.views import greed
+from preds.views import DebugRedirectView
 
 urlpatterns = [
     # Uncomment the next line to enable the admin:
@@ -42,12 +42,10 @@ urlpatterns = [
     path('emptyext/', Empty_ext, name='emptyext'),
 
     path('preds/', include('preds.urls') ),
-    path('preds/greed/', include('preds.urls')),  # тестирование структуры greed for mobile
-
+    # path('preds/greed/', include('preds.urls')),  # тестирование структуры greed for mobile
 
     # path('', include('app.urls'))
-
-    path('', greed)
+    path('', DebugRedirectView.as_view() )  #отладка view preds/greed -> Energy diet smart
 
 
 ]

@@ -1,0 +1,21 @@
+{% load ext_data_user %}
+
+
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col footer__proj rubric_info">
+                <div class="eds_title_info" >&reg;Проект 2020 г</div>
+                <div>Найти себя</div>
+            </div>
+
+            <div class="col footer__header">
+                {% header_data %}
+            </div>
+
+            <div class="col footer__cons">
+                {% cons_data user %}
+            </div>
+        </div>
+    </div>
+</div>

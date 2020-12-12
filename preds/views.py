@@ -2,6 +2,14 @@ from django.shortcuts import render
 
 from django.core.cache import cache
 from django.http import JsonResponse
+from django.views.generic.base import RedirectView
+
+
+class DebugRedirectView(RedirectView):
+    """Перенаправление
+    используется при отладке"""
+
+    url = 'preds/greed/'    # страница EnergyDiet Smart
 
 
 

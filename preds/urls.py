@@ -1,9 +1,11 @@
+"""
+preds.urls
+"""
+
 
 from django.urls import path
 
 from .views import index, greed, get_content_eds, get_content_eds_html
-
-
 
 
 

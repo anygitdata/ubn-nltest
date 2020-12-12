@@ -170,11 +170,8 @@ h1 {
   background-color: green; }
 
 .footer {
-  width: 100%;
-  flex: 0 0 auto;
-  display: flex;
-  justify-content: space-between;
-  background-color: slategray; }
+  background-color: slategray;
+  color: white; }
 
 .footer__proj, .footer__header, .footer__cons {
   flex: 1; }
@@ -183,6 +180,10 @@ h1 {
 .eds_title_info {
   font-family: 'PT Sans Narrow Bold', sans-serif;
   margin-bottom: 0; }
+
+/* Специальные заголовки в карочках */
+.rubric_info {
+  font-family: 'PT Sans Narrow', sans-serif; }
 
 /* Списки с информацией о продукции */
 .eds_ul_left, .eds_ul_right, .eds_ul_none {

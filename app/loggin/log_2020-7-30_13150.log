@@ -33,3 +33,4 @@
 28.09.2020 18:47:34 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
 28.09.2020 18:52:19 keyLevel:ProgrammingError  numLevel:100: ProgrammingError ERROR:(1146, "Table 'u0895627_nlintern.vs_auth_advdata_status' doesn't exist")
 28.09.2020 18:52:30 keyLevel:TypeError  numLevel:30: TypeError ERROR:'NoneType' object is not iterable
+12.12.2020 14:07:46 keyLevel:SyntaxError  numLevel:30: SyntaxError ERROR:advuser.serv_advuser.Com_proc_advuser get_dataCons arg user не определен

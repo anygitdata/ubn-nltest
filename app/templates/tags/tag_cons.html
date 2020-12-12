@@ -5,17 +5,15 @@
 
 {% if items %}
 
-    {% if not typedata %}
-        <div class="text-center">Личный консультант </div>
-    {% else %}
-        <div class="text-center">Администратор проекта </div>
-    {% endif %}
+    <div class="eds_title_info">
+        <div>{{headerdata}}</div>
+    </div>
 
-    <div class="w-100"></div>
-    <div style="font-size: 0.6rem;" class="text-left" >     
+    {% comment %} <div class="w-100"></div> {% endcomment %}
+    <div style="font-size: 0.6rem;" class="text-left" >
         <ul style="list-style-type:none" >
         {%for item in items %}
-            <li> 
+            <li>
                 {%if item.item == 'email'%}
                    <i class="fa fa-share" aria-hidden="true"></i>
                 {% elif item.item == 'phone'%}
@@ -33,9 +31,3 @@
     </div>
 
 {% endif %}
-
-
-
-
-
-
