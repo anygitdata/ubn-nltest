@@ -14,6 +14,9 @@ from advuser.serv_advuser import Com_proc_advuser
 
 register = template.Library()
 
+
+
+
 @register.inclusion_tag('tags/tag_footer.html')
 def cont_footer():
     """footer страницы"""

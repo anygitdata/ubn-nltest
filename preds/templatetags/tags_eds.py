@@ -4,6 +4,12 @@ from django import template
 register = template.Library()
 
 
+
+@register.inclusion_tag('tags/eds_tag_progr.html')
+def tag_eds_progr():
+    return None
+
+
 @register.inclusion_tag('tags/eds_tag01.html')
 def tag_eds01():
     """Рендеринг тэга tag01.htm."""
